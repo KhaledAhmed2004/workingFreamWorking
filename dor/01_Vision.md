@@ -48,7 +48,7 @@ In healthcare, confusion is dangerous. Our design must embody radical clarity, s
 2.  **Privacy as a Fundamental Right:** Trust is our currency. Health data must be fiercely protected, transparently managed, and entirely controlled by the patient.
 3.  **Empathy in Engineering:** We build for people at their most vulnerable. Every interaction must be designed with deep empathy for the physical, cognitive, and emotional realities of illness and aging.
 4.  **Interoperability by Default:** Healthcare is a team sport. Our platform must effortlessly connect and communicate with the broader healthcare ecosystem—silos are the enemy of care.
-5.  **Proactive, Not Reactive:** The system must anticipate needs, predict risks, and gently guide behavior before a crisis occurs.
+5.  **Proactive, Not Reactive:** The system must identify adherence risks and enable proactive care coordination before a crisis occurs.
 
 ## North Star
 
