@@ -78,3 +78,214 @@ The opportunity lies in becoming the trusted infrastructure that all stakeholder
 ## Problem Statement Summary
 
 The healthcare system successfully diagnoses disease and prescribes treatment, but entirely fails to support the patient in executing that treatment at home. This abandonment forces vulnerable patients and untrained caregivers to navigate complex, siloed medical regimens manually, leading directly to non-adherence, immense emotional burden, and catastrophic health failures. Current solutions are passive, fragmented, and disconnected from the clinical ecosystem. There is a profound need for an intelligent system that absorbs this complexity, coordinates care seamlessly across all stakeholders, and transforms medication management from an isolated risk into a supported, continuous health process.
+
+---
+
+## Appendix: Original Generation Prompt & Feedback
+
+*The following prompt was used to generate this Problem document. It is preserved here to provide context for future roadmaps and product planning.*
+
+<details>
+<summary>Click to view the original prompt</summary>
+
+```text
+# ROLE
+You are a Principal Product Strategist, Healthcare Systems Thinker, Healthcare Policy Analyst, Service Designer, and Product Discovery Lead.
+You specialize in identifying systemic healthcare problems, root causes, and business opportunities before any solution is designed.
+Your responsibility is NOT to propose features or solutions.
+Your responsibility is to define the problem with exceptional clarity.
+Think like someone preparing the Problem Definition section for a billion-dollar healthcare platform.
+
+---
+
+# CONTEXT
+We are building a next-generation Medication Management Ecosystem.
+The long-term product vision has already been approved.
+The Vision defines WHY the product exists.
+Now we are moving to the next discovery artifact:
+Problem.md
+Your responsibility is to identify the real-world healthcare problems that prevent the vision from becoming reality.
+This document will become the foundation for every future discovery artifact.
+
+---
+
+# PREVIOUSLY APPROVED ARTIFACTS
+The following artifact is approved and finalized.
+✓ Vision.md
+Use Vision.md as the foundation.
+Do NOT rewrite it.
+Do NOT summarize it.
+Do NOT critique it.
+Do NOT improve it.
+Assume it is final.
+Every problem identified must align with the approved Vision.
+
+---
+
+# OBJECTIVE
+Create the official Problem.md document.
+The purpose of this document is to define:
+• What problems exist today?
+• Why do they exist?
+• Who is affected?
+• Why are current healthcare systems failing?
+• What are the consequences?
+Focus on the healthcare ecosystem—not our future product.
+
+---
+
+# SCOPE
+Create ONLY the following sections.
+## Executive Problem Statement
+Provide a high-level overview of the medication management crisis.
+---
+## Problem Landscape
+Describe the current healthcare environment.
+Explain why medication management is difficult.
+Explain the systemic complexity.
+---
+## Core Problems
+Identify the major categories of problems.
+Examples include:
+- Medication Non-Adherence
+- Fragmented Care
+- Poor Communication
+- Cognitive Burden
+- Limited Visibility
+- Poor Coordination
+- Manual Processes
+- Medication Safety Risks
+Do not limit yourself to these.
+---
+## Root Cause Analysis
+For every core problem explain:
+- Root Cause
+- Why it happens
+- Systemic Cause
+- Human Cause
+- Environmental Cause
+Go deeper than symptoms.
+---
+## Stakeholders Affected
+Without creating Stakeholder Personas,
+identify who is affected by each problem.
+Examples:
+- Patients
+- Caregivers
+- Doctors
+- Pharmacists
+- Hospitals
+- Insurance Providers
+Only explain impact.
+Do NOT perform stakeholder analysis.
+---
+## Current Solutions
+Explain how these problems are currently addressed.
+Examples:
+- Phone alarms
+- Pill boxes
+- Reminder apps
+- Paper prescriptions
+- Manual follow-up
+- Caregiver calls
+---
+## Why Current Solutions Fail
+Explain the limitations of current approaches.
+Focus on systemic failure rather than feature comparison.
+---
+## Human Impact
+Explain emotional, physical, financial, and social consequences.
+---
+## Healthcare System Impact
+Explain consequences for providers, hospitals, insurers, and public health.
+---
+## Business Opportunity
+Without proposing product features,
+explain why solving these problems creates long-term business value.
+---
+## Problem Statement Summary
+Summarize the most critical insights.
+
+---
+
+# OUT OF SCOPE
+Do NOT generate:
+- Features
+- Personas
+- JTBD
+- User Journey
+- Empathy Maps
+- Behavior Analysis
+- Habit Loops
+- Information Architecture
+- Wireframes
+- UX Design
+- Product Strategy
+- Roadmap
+- KPIs
+- Modules
+- Technical Architecture
+These belong to later discovery sprints.
+
+---
+
+# QUALITY STANDARDS
+The document must:
+- Focus on problems, not solutions.
+- Explain root causes instead of symptoms.
+- Consider healthcare as a complete ecosystem.
+- Avoid generic statements.
+- Avoid feature thinking.
+- Use evidence-based product thinking.
+- Read like an enterprise healthcare strategy document.
+
+---
+
+# REVIEW CHECKLIST
+Before finishing, verify:
+✓ Every problem has a root cause.
+✓ No features were proposed.
+✓ No personas were created.
+✓ No user journeys were generated.
+✓ Every section aligns with Vision.md.
+✓ The document is solution-agnostic.
+✓ The document focuses on understanding the problem rather than solving it.
+If any checklist item fails, revise the document before presenting it.
+
+---
+
+# OUTPUT FORMAT
+# Problem.md
+## Executive Problem Statement
+## Problem Landscape
+## Core Problems
+## Root Cause Analysis
+## Stakeholders Affected
+## Current Solutions
+## Why Current Solutions Fail
+## Human Impact
+## Healthcare System Impact
+## Business Opportunity
+## Problem Statement Summary
+```
+</details>
+
+### Additional Feedback for Prompt Framework Standardization
+
+*The following feedback was also considered to ensure enterprise-grade prompt consistency for all future sprints:*
+
+> "আমি হলে পুরো Prompt Framework-টা আরও enterprise-grade করতাম
+> 
+> আমি প্রতিটি artifact-এর prompt একই skeleton-এ লিখতাম:
+> 
+> 1. ROLE
+> 2. CONTEXT
+> 3. PREVIOUSLY APPROVED ARTIFACTS
+> 4. OBJECTIVE
+> 5. SCOPE
+> 6. OUT OF SCOPE
+> 7. QUALITY STANDARDS
+> 8. REVIEW CHECKLIST
+> 9. OUTPUT FORMAT
+> 
+> এই structure-এর সবচেয়ে বড় সুবিধা হলো, Sprint 2, Sprint 3, Sprint 10—সব prompt একই pattern follow করবে। AI-এর output আরও consistent হবে, review সহজ হবে, আর প্রতিটি artifact আগের approved artifact-এর উপর ভিত্তি করে তৈরি হবে। এটাই বড় product team-গুলো document-driven workflow-তে অনুসরণ করে।"
