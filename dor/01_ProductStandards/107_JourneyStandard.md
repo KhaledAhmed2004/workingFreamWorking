@@ -3,7 +3,7 @@ Title: 107_JourneyStandard
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Draft
+Status: Frozen
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -11,11 +11,11 @@ Reviewer: Enterprise Architecture Review Board
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: N/A
-Last Reviewed: N/A
-Review Status: N/A
+Approval Date: 2026-07-06
+Last Reviewed: 2026-07-06
+Review Status: Approved
 Artifact ID: PS-107
-Depends On: 103_ProductPrinciplesStandard.md, 105_PersonaStandard.md, 106_JTBDStandard.md
+Depends On: 101_ProblemStandard.md, 103_ProductPrinciplesStandard.md, 105_PersonaStandard.md, 106_JTBDStandard.md
 Extends: 050_ProductStandardContract.md
 Base Contract: 050_ProductStandardContract.md
 Template Path: 01_ProductStandards/Templates/Discovery/Journey.template.md
@@ -35,9 +35,9 @@ Artifacts following this standard MUST pass these checks:
 
 ### Validation Rules
 - No orphan Journeys.
-- Every Journey MUST map to exactly one `JTBD-ID`.
+- Every Journey Pair MUST map to exactly one `JTBD-ID`.
 - Every Journey MUST be performed by exactly one primary `PER-ID`.
-- Every step within the journey MUST define an emotional valence (Positive / Negative / Neutral).
+- Every step within the journey MUST have a stable `STEP-ID` and define an emotional valence (Positive / Negative / Neutral).
 - Every Journey MUST identify at least one "Moment of Truth".
 
 ### Quality Gates
@@ -45,22 +45,28 @@ Artifacts following this standard MUST pass these checks:
 - **QG-JRN-002**: Reject if a Future State Journey contains Current State frictions defined in `106` without explicitly proposing a resolution.
 - **QG-JRN-003**: Reject if the Journey steps contradict the constraints established in `103_ProductPrinciplesStandard`.
 - **QG-JRN-004**: Reject if the Journey lacks touchpoint definitions (e.g., ignoring whether a step happens physically or digitally).
+- **QG-JRN-005**: Reject if a Future State Journey includes UI-specific or implementation-specific details (e.g., button names, dashboard screens). Wording must remain solution-neutral.
+- **QG-JRN-006**: Reject if any journey step lacks a `Step ID`.
 
 ## 3. Core Components
 
 ### 3.1 Journey Metadata Schema (The Journey Header)
 Every Journey MUST be modeled with this strict schema:
-- **Journey ID**: (e.g., JRN-001)
+- **Journey Pair ID**: (e.g., JPAIR-001) - Links the Current and Future state of the same flow.
+- **Current Journey ID**: (e.g., JRN-CUR-001)
+- **Future Journey ID**: (e.g., JRN-FUT-001)
 - **Journey Version ID**: (e.g., v1.0, v1.1)
 - **Journey Status**: (Active / Candidate / Merged / Archived)
 - **Parent JTBD**: (`JTBD-ID`)
 - **Performed By**: (`PER-ID`)
-- **State**: (Current State / Future State)
 - **Trigger**: (The specific event that initiates this journey)
 - **Outcome**: (How it concludes, which MUST map to the JTBD Success Metric)
+- **Evidence Source**: (e.g., Observational Study, Support Ticket Logs)
+- **Confidence Level**: (Validated / High / Medium / Low)
 
 ### 3.2 Phase & Step Schema
 Journeys are divided into domain-flexible Phases (e.g., rather than forcing generic "Awareness/Consideration", healthcare might use "Admission/Triage/Treatment"). Each Phase contains sequential Steps with the following schema:
+- **Step ID**: (e.g., STEP-001) - Stable reference for downstream `108` Requirements tracing.
 - **Step Name**: (e.g., "Nurse verifies patient ID")
 - **Touchpoint**: (Where this happens, e.g., Kiosk, Mobile App, Physical Desk)
 - **Emotional Valence**: (Positive / Negative / Neutral)
@@ -85,6 +91,7 @@ Every Journey MUST trace back to:
 - AI Swarms MUST synthesize Future State journeys by logically resolving the "Current Friction" from the hydrated `106` Job Card.
 - AI MUST ensure the Journey's "Outcome" directly satisfies the "Success Metric" of the parent Job.
 - AI MUST NOT hallucinate steps that require capabilities explicitly forbidden by the `103_ProductPrinciplesStandard`.
+- AI MUST maintain strict solution-neutrality in Future State wording.
 
 ### Memory TTL
 - `Permanent` for the duration of the Solution Context Layer generation.

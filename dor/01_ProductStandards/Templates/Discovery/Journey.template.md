@@ -31,16 +31,19 @@ Next Artifact: [Requirements Document]
 [Maps of how the Personas currently accomplish their Jobs, highlighting existing frictions.]
 
 ## [Journey Name] (e.g., Current Manual Shift Handoff)
-- **Journey ID**: [e.g., JRN-001]
+- **Journey Pair ID**: [e.g., JPAIR-001]
+- **Current Journey ID**: [e.g., JRN-CUR-001]
 - **Journey Version ID**: [e.g., v1.0]
 - **Journey Status**: [Active / Candidate / Merged / Archived]
 - **Parent JTBD**: [e.g., JTBD-001]
 - **Performed By**: [e.g., PER-001]
-- **State**: Current State
 - **Trigger**: [What initiates this journey?]
 - **Outcome**: [How it concludes today]
+- **Evidence Source**: [e.g., Observational Study]
+- **Confidence Level**: [Validated / High / Medium / Low]
 
 ### Phase 1: [Domain-Specific Phase Name, e.g., Preparation]
+- **Step ID**: [e.g., STEP-001]
 - **Step**: [e.g., Nurse manually transcribes notes]
   - **Touchpoint**: [e.g., Paper clipboard]
   - **Emotional Valence**: [Negative]
@@ -48,6 +51,7 @@ Next Artifact: [Requirements Document]
   - **Moment of Truth**: [Yes/No]
 
 ### Phase 2: [Domain-Specific Phase Name, e.g., Execution]
+- **Step ID**: [e.g., STEP-002]
 - **Step**: [...]
   - **Touchpoint**: [...]
   - **Emotional Valence**: [...]
@@ -58,26 +62,30 @@ Next Artifact: [Requirements Document]
 
 
 # 5. Future State Journeys
-[Maps of the envisioned experience, demonstrating how the product resolves current frictions.]
+[Maps of the envisioned experience, demonstrating how the product resolves current frictions WITHOUT specifying UI solutions.]
 
 ## [Journey Name] (e.g., Automated Digital Shift Handoff)
-- **Journey ID**: [e.g., JRN-002]
+- **Journey Pair ID**: [e.g., JPAIR-001]
+- **Future Journey ID**: [e.g., JRN-FUT-001]
 - **Journey Version ID**: [...]
 - **Journey Status**: [...]
 - **Parent JTBD**: [e.g., JTBD-001]
 - **Performed By**: [e.g., PER-001]
-- **State**: Future State
 - **Trigger**: [What initiates this journey in the new product?]
 - **Outcome**: [How it concludes, MUST satisfy JTBD Success Metric]
+- **Evidence Source**: [...]
+- **Confidence Level**: [...]
 
 ### Phase 1: [Domain-Specific Phase Name, e.g., Preparation]
-- **Step**: [e.g., Nurse taps 'Generate Handoff' on tablet]
-  - **Touchpoint**: [e.g., Mobile App - Dashboard]
+- **Step ID**: [e.g., STEP-003]
+- **Step**: [e.g., Nurse initiates handoff generation through approved digital workflow.]
+  - **Touchpoint**: [e.g., Digital workflow interface]
   - **Emotional Valence**: [Positive]
   - **Friction**: [None]
   - **Moment of Truth**: [Yes]
 
 ### Phase 2: [Domain-Specific Phase Name]
+- **Step ID**: [e.g., STEP-004]
 - **Step**: [...]
   - **Touchpoint**: [...]
   - **Emotional Valence**: [...]
