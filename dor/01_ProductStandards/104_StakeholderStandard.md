@@ -1,5 +1,5 @@
 ---
-Title: 104_StakeholderGovernanceStandard
+Title: 104_StakeholderStandard
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
@@ -22,10 +22,10 @@ Template Path: 01_ProductStandards/Templates/Discovery/Stakeholder.template.md
 Next Artifact: 105_PersonaStandard.md
 ---
 
-# Stakeholder Governance Standard
+# Stakeholder Standard
 
 ## 1. Definition
-The `104_StakeholderGovernanceStandard` is the root node of the Human Context Layer. It defines a rigid, enterprise-grade governance structure for cataloging every human, system, and regulatory entity impacted by the product. This standard prevents downstream duplication in `105_Persona` and `107_Journey` by acting as the single source of truth for the Stakeholder Registry, Influence Model, and Conflict Matrix.
+The `104_StakeholderStandard` is the root node of the Human Context Layer. It defines a rigid, enterprise-grade governance structure for cataloging every human, system, and regulatory entity impacted by the product. This standard prevents downstream duplication in `105_Persona` and `107_Journey` by acting as the single source of truth for the Stakeholder Registry, Influence Model, and Conflict Matrix.
 
 ## 2. Validation & Quality Gates
 Artifacts following this standard MUST pass these checks:
