@@ -3,7 +3,7 @@ Title: 052_DiscoveryArchitectureManifest
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Draft
+Status: Frozen
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Enterprise Architecture Review Board
@@ -11,9 +11,9 @@ Reviewer: Chief Product Officer
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: N/A
-Last Reviewed: N/A
-Review Status: N/A
+Approval Date: 2026-07-06
+Last Reviewed: 2026-07-06
+Review Status: Approved
 Artifact ID: PS-052
 Depends On: 050_ProductStandardContract.md, 051_ProductArtifactContract.md
 Next Artifact: 053_DiscoveryExecutionRules.md
@@ -117,7 +117,7 @@ Every artifact MUST explicitly declare what context it is exporting to the netwo
 - **Inheritance**: No artifact inherits from another artifact. They *reference* each other. Standards inherit from `050`; Artifacts inherit from `051`.
 
 ## 10. Traceability Rules
-- Every feature mentioned in `108` MUST trace to a JTBD in `106`.
+- Every requirement or capability in `108` MUST trace to a JTBD in `106`.
 - Every JTBD in `106` MUST trace to a Persona in `105`.
 - Every metric in `109` MUST trace to a Goal in `102`.
 - Any orphaned node (a requirement with no JTBD, a persona with no stakeholder) triggers an immediate architecture violation.
@@ -130,7 +130,7 @@ graph LR
     InReview -- Rejected --> Draft
     InReview -- Approved --> Frozen[Frozen]
 ```
-Reviews strictly travel bottom-to-top through the ownership matrix.
+Reviews follow the artifact ownership matrix and must be performed by the designated reviewer for each artifact.
 
 ## 12. Approval Flow
 Approvals require cryptographic or explicit systemic sign-off by the role designated in the Ownership Matrix. Proxies are not permitted for `100`, `103`, and `111`.
@@ -195,7 +195,7 @@ graph TD
 No artifact outside the Discovery Layer may be instantiated until `111_DiscoveryFreezeStandard` is explicitly Approved and Frozen.
 
 ## 19. Discovery Completion Criteria
-The Product Discovery phase is legally complete when:
+The Product Discovery phase is architecturally complete when:
 1. Artifacts `100` through `110` are `Status: Frozen`.
 2. Artifact `111` calculates zero Traceability Violations.
 3. The Executive Board cryptographically signs `111`.
