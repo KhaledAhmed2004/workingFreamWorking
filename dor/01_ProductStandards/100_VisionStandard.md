@@ -3,7 +3,7 @@ Title: 100_VisionStandard
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Draft
+Status: In Review
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -13,7 +13,7 @@ Created: 2026-07-06
 Updated: 2026-07-06
 Approval Date: N/A
 Last Reviewed: N/A
-Review Status: N/A
+Review Status: Pending Audit
 Artifact ID: PS-100
 Depends On: 00_ProductStandardsManifest
 Next Artifact: 101_ProblemStandard.md
@@ -64,50 +64,73 @@ This standard governs the creation, validation, and lifecycle of the `Vision.md`
 
 ## 11. Required Sections
 Every `Vision.md` artifact MUST implement the following specific headers:
-1. **Purpose**: The "Why".
-2. **Scope**: The boundaries of the vision.
-3. **Vision Statement**: A concise 1-2 sentence pitch.
-4. **Vision Narrative**: Long-form description of the future state.
-5. **Business Opportunity**: Why the enterprise cares.
-6. **Customer Problem**: The core pain point being solved.
-7. **Target Audience**: Who benefits directly.
-8. **Value Proposition**: Business vs. User value.
-9. **Strategic Alignment**: How this fits into corporate goals.
-10. **Differentiation**: Why we are uniquely positioned to win.
-11. **North Star Metric**: The single metric of success.
-12. **Success Criteria**: Macro-level milestones.
-13. **Out of Scope**: Explicitly what we are NOT building.
-14. **Constraints**: Budget, timeline, or technology limits.
-15. **Assumptions**: What must be true for this to succeed.
-16. **Dependencies**: External blockers.
-17. **Acceptance Criteria**: What proves this vision is valid.
-18. **Traceability**: Graph linkages to upstream corporate goals.
-19. **AI Context**: Special instructions for downstream AI agents.
+1. **Executive Summary**: 30-second read for executives.
+2. **Purpose**: The "Why".
+3. **Scope**: The boundaries of the vision.
+4. **Vision Statement**: A concise 1-2 sentence pitch.
+5. **Vision Narrative**: Long-form description of the future state.
+6. **Business Opportunity**: Why the enterprise cares.
+7. **Customer Problem**: The core pain point being solved.
+8. **Target Audience**: Who benefits directly.
+9. **Value Proposition**: Business vs. User value.
+10. **Strategic Alignment**: How this fits into corporate goals.
+11. **Differentiation**: Why we are uniquely positioned to win.
+12. **North Star Metric**: The single metric of success.
+13. **Success Criteria**: Macro-level milestones.
+14. **Out of Scope**: Explicitly what we are NOT building.
+15. **Constraints**: Budget, timeline, or technology limits.
+16. **Assumptions**: What must be true for this to succeed.
+17. **Dependencies**: External blockers.
+18. **Acceptance Criteria**: What proves this vision is valid.
+19. **Traceability**: Graph linkages to upstream goals.
+20. **AI Context**: Special instructions for agents.
 
-## 12. Template Reference
-The raw execution template is located at:
-`01_ProductStandards/Templates/Discovery/Vision.template.md`
+## 12. Template Contract
+- **Template Name**: Discovery Vision Template
+- **Template Version**: 1.0
+- **Template Path**: `01_ProductStandards/Templates/Discovery/Vision.template.md`
+- **Template Owner**: Product Architecture Board
+- **Compatibility**: All Enterprise Products (v1.0+)
+- **Required Metadata**: Title, Artifact Version, Status, Phase, Owner, Approver, Artifact ID.
 
 ## 13. Validation
-To pass validation (`07_ValidationStandards`), a Vision MUST:
-- Contain exactly one North Star Metric.
-- Define at least one explicit "Out of Scope" item.
-- Contain a Vision Statement no longer than 3 sentences.
+To pass validation (`07_ValidationStandards`), a Vision MUST comply with:
+- **Structural**: Exact match of all 20 required markdown headers.
+- **Semantic**: Vision Statement must be under 3 sentences. Exactly ONE North Star Metric must be defined.
+- **Relationship**: Must trace to an overarching corporate strategy.
+- **Traceability**: No orphaned dependencies allowed.
+- **Consistency**: Narrative must logically align with the North Star Metric.
 
 ## 14. Acceptance Criteria
 - Stakeholder consensus achieved.
 - Traceability graph fully hydrated.
 
 ## 15. Quality Gates
-- `QG-VIS-001`: Does the North Star Metric align with the Strategic Alignment section?
-- `QG-VIS-002`: Are there any architectural implementation details leaked into the vision? (Must be flagged as Failure).
+- **Gate ID**: `QG-VIS-001`
+  - **Severity**: High
+  - **Blocking**: Yes
+  - **Consumed Evidence**: `Strategic Alignment` and `North Star Metric` sections.
+  - **Decision**: Reject if the North Star Metric contradicts the corporate strategy.
+- **Gate ID**: `QG-VIS-002`
+  - **Severity**: Critical
+  - **Blocking**: Yes
+  - **Consumed Evidence**: Complete Document.
+  - **Decision**: Reject if UI features, technical architecture, or database schemas are leaked into the Vision.
 
 ## 16. Traceability
-- **Parent**: None (Root Node).
-- **Children**: `Problem.md`, `Goals.md`, `Principles.md`.
+- **Consumes**: Corporate Strategy, Market Research.
+- **Produces**: Boundaries for `101_ProblemStandard`.
+- **References**: Competitor Analysis.
+- **Validates**: Alignment with Executive Mandate.
+- **Constrained By**: Budget limitations and regulatory constraints.
 
 ## 17. AI Context
-When injecting `Vision.md` into an AI's context window for downstream tasks (like PRD generation), instruct the AI to prioritize the `Vision Statement` and `Out of Scope` sections to prevent hallucinated scope creep.
+- **Context Priority**: High (Must be preserved in long-term memory).
+- **Required Context**: `Vision Statement`, `North Star Metric`, `Out of Scope`.
+- **Optional Context**: `Vision Narrative`, `Assumptions`.
+- **Forbidden Context**: Ignore any tactical implementation hints buried in the narrative.
+- **Compression Rules**: When summarizing, retain verbatim the `North Star Metric`.
+- **Hydration Rules**: Inject into all downstream Definition and Architecture tasks.
 
 ## 18. Extension Points
 - Organizations may append custom `Compliance Validation` blocks for regulated domains (e.g., HIPAA mapping).
@@ -118,25 +141,12 @@ The standard is successful when 100% of enterprise products have a machine-reada
 ## 20. Exit Criteria
 - [ ] Review by Enterprise Architecture Board
 - [ ] Compliance with `00_ProductStandardsManifest.md`
-- [ ] Template `Vision.template.md` created
+- [ ] Template `Vision.template.md` verified
 - [ ] Ready for Freeze
 
----
-
-# AI Generation Rules
-
-## AI Generation
-When an AI agent is tasked with generating a `Vision.md`, it MUST recursively query the user/stakeholder until it has sufficient data to fill all 19 Required Sections without hallucinating business strategy.
-
-## AI Validation
-An AI Validation Agent MUST read the generated `Vision.md` and explicitly reject it if any UI/UX features or database schemas are mentioned. Visions are about "Why", not "How".
-
-## AI Review
-The Review Agent MUST map the `Vision Narrative` against the `North Star Metric` and flag if they are logically disconnected.
-
-## AI Consumption
-When consuming this document to generate a `101_ProblemStandard` artifact, the AI MUST strictly inherit the `Target Audience` and `Customer Problem` sections as immutable context.
-
-## AI Constraints
-- AI MUST NOT invent North Star Metrics; it must extract or negotiate them with human stakeholders.
-- AI MUST NOT overwrite the `Strategic Alignment` without explicit executive context.
+## 21. AI Contract
+- **AI Generation Rules**: The agent MUST recursively query stakeholders until all 20 Required Sections are populated. It MUST NOT hallucinate business strategy.
+- **AI Validation Rules**: The agent MUST reject the artifact if any technical architecture or UI/UX implementation details are present.
+- **AI Review Rules**: The Review Agent MUST map the `Vision Narrative` against the `North Star Metric` and flag logical disconnections.
+- **AI Consumption Rules**: Downstream agents MUST strictly inherit the `Target Audience` and `Customer Problem` sections as immutable context.
+- **AI Constraints**: The AI MUST NOT invent North Star Metrics; they must be negotiated. The AI MUST NOT overwrite `Strategic Alignment` without explicit executive overrides.
