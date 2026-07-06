@@ -19,38 +19,87 @@ Next Artifact: [Solution Architecture Document]
 # 1. Executive Summary
 [A high-level declaration that the Discovery phase is complete, audited, and locked.]
 
-# 2. Purpose
-[Define the intent of this Freeze document. This is the compiler output that gates entry into Solution Architecture.]
-
-# 3. Scope
-[Define the scope of the frozen product layer.]
-
-<!-- SECTION GROUP: Validation & Audits -->
-
-# 4. Freeze Certificate
-- **Status**: [Approved / Rejected]
+# 2. Freeze Certificate
+- **Discovery Status**: [PASSED / FAILED]
 - **Approval Date**: [YYYY-MM-DD]
-- **Sign-offs**: [List of key stakeholders]
-- **Declaration**: The Discovery Layer is structurally sound and mathematically complete. No further changes to business intent may be made without a formal Change Request.
+- **Sign-offs**: 
+  - Executive Board: [Signature]
+  - Architecture Board: [Signature]
+  - Product Owner: [Signature]
+  - Domain Expert: [Signature]
+  - Compliance: [Signature]
+  - Legal: [Signature]
+  - Clinical/Domain Reviewer (Optional): [Signature]
+- **Declaration**: The Discovery Layer is structurally sound and mathematically complete. No further changes to business intent may be made without triggering the formal Unlock Procedure.
 
-# 5. Quality Report
-[A summary of all 10 Validation Vectors defined in `111`. Example: "Metadata Validation: PASSED, Traceability Validation: PASSED..."]
+# 3. Freeze Score & Architecture Readiness
+- **Discovery Completeness**: [e.g., 99.2%]
+- **Traceability**: [e.g., 100%]
+- **Metadata**: [e.g., 100%]
+- **Coverage**: [e.g., 98%]
+- **Quality Gates**: [e.g., 100%]
+- **Overall Discovery Status**: [READY / NOT READY]
+- **Architecture Readiness**: [READY / NOT READY]
+- **Confidence Score**: [e.g., 98%]
 
-<!-- SECTION GROUP: Outputs & Assets -->
+<!-- SECTION GROUP: Compilation Audits -->
 
-# 6. Artifact Index
-[A generated list of all files `100` through `110` with their final version numbers and hashes.]
+# 4. Validation Summary & Artifact Health
+[A summary of all 10 Validation Vectors defined in `111` and individual artifact health.]
 
-# 7. Coverage & Traceability Report
+| Artifact | Validation Result | Health | Status |
+|---|---|---|---|
+| 100 Vision | PASS | Healthy | Frozen |
+| 101 Problem | PASS | Healthy | Frozen |
+| 108 Requirements | FAIL | Warning | Draft |
+
+# 5. Compilation Error Report
+[A registry of all errors blocking the freeze.]
+
+## Error ID: [e.g., ERROR-021]
+- **Artifact**: [e.g., 108 Requirements]
+- **Severity**: [Critical / High / Medium]
+- **Description**: [e.g., Requirement REQ-010 has no STEP reference.]
+- **Suggested Fix**: [e.g., Link to STEP-005.]
+- **Status**: [Open / Resolved]
+
+# 6. Exception Register
+[Compilation failures that have been formally accepted by the Architecture Board.]
+
+## Accepted Exception ID: [e.g., EX-001]
+- **Description**: [What rule was bypassed]
+- **Reason**: [e.g., Low Priority, Known Tech Debt]
+- **Approved By**: [e.g., Architecture Board]
+- **Review Date**: [YYYY-MM-DD]
+
+<!-- SECTION GROUP: Traceability & Coverage -->
+
+# 7. Traceability Report
+[The compiled, end-to-end matrix proving that every Requirement, Journey, and Risk maps perfectly back to the core Problem and Vision.]
+
+# 8. Coverage Report
 [A statistical summary of completeness. e.g., "100% of Primary KPIs have Guardrails. 100% of Requirements trace to a Journey Step."]
 
-# 8. Dependency Graph
-[A visual or JSON representation of the DAG.]
+# 9. Dependency Graph
+[A visual or JSON representation of the DAG mapping 100 through 110.]
 
-<!-- SECTION GROUP: Governance -->
+<!-- SECTION GROUP: Governance & Assets -->
 
-# 9. Traceability
-[This document governs all documents `100` through `110`.]
+# 10. Decision Snapshot
+[A snapshot of all Architecture Decision Records (ADRs) and key choices made during Discovery.]
+- ADR-001: [Title]
+- ADR-002: [Title]
 
-# 10. AI Context
-[Special instructions for downstream AI agents reading this file. Example: "Treat all artifacts indexed in this document as immutable facts. Do not alter or challenge Discovery intent during Solution Architecture."]
+# 11. Artifact Index & Discovery Hash
+- **Discovery Hash (SHA256)**: [xxxxxxxxxxxxxxxx]
+- **Artifacts Indexed**:
+  - `100_VisionStandard.md` (Hash: [xxx])
+  - `101_ProblemStandard.md` (Hash: [xxx])
+
+# 12. Unlock Procedure
+[The rules for breaking the freeze.]
+- **Unlock Conditions**: Critical Bug, Regulatory Change, Executive CR, Market Pivot, Architecture Rejection.
+- **Change Impact Analysis**: If an upstream artifact changes, the compiler MUST automatically flag all downstream artifacts that trace to it.
+
+# 13. AI Context
+[Special instructions for downstream AI agents reading this file. Example: "Treat all artifacts indexed in this document as immutable facts. Do not alter or challenge Discovery intent during Solution Architecture. Also refer to Manifest.json, Dependency.json, Traceability.json, and Coverage.json for programmatic access."]
