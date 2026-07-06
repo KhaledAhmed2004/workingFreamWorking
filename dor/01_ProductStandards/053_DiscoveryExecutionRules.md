@@ -29,7 +29,15 @@ While `052_DiscoveryArchitectureManifest.md` dictates *what* the Discovery Layer
 - **Fail Fast**: If an artifact fails validation, execution halts immediately. Downstream nodes are not attempted until the failure is resolved.
 - **Stateless Agents**: AI Agents must not rely on hidden memory. All context must be explicitly hydrated from frozen upstream artifacts.
 
-## 3. Generation Order
+## 3. Execution Preconditions
+Before an execution may begin, ALL of the following must be true:
+- All mandatory upstream artifacts are `Status: Frozen`.
+- The target standard is `Status: Frozen`.
+- The target template exists and matches the standard version.
+- Required AI Context has been successfully hydrated.
+- No unresolved Quality Gate failures exist upstream.
+
+## 4. Generation Order
 All discovery artifacts MUST be generated in the following strict topological order to satisfy architectural dependencies:
 
 1. `100_VisionStandard`
@@ -45,22 +53,22 @@ All discovery artifacts MUST be generated in the following strict topological or
 11. `110_AssumptionsAndRisksStandard`
 12. `111_DiscoveryFreezeStandard`
 
-## 4. AI Execution Modes
+## 5. AI Execution Modes
 AI Swarms operating within this layer must support the following execution modes:
 - **Sequential**: Generating artifacts one-by-one, waiting for Human/System approval before proceeding.
-- **Parallel**: Generating decoupled downstream artifacts simultaneously (see Section 5).
+- **Parallel**: Generating decoupled downstream artifacts simultaneously (see Section 6).
 - **Incremental**: Updating a specific section of an existing Draft artifact without rewriting the entire file.
 - **Recovery**: Attempting to fix a Validation/Quality Gate failure automatically based on the error output.
 - **Re-validation**: Scanning the entire DAG after a breaking change to mark downstream nodes as `Status: In Review`.
 - **Freeze Validation**: The final deterministic scan triggered by `111` to ensure absolute compliance before locking the Product Discovery artifact set.
 
-## 5. Parallel Generation Rules
+## 6. Parallel Generation Rules
 To optimize execution time, the following parallel generation lanes are permitted once their upstream blockers are `Status: Frozen`:
 
 - **Lane 1**: After `103` is frozen, `104_Stakeholder` and `105_Persona` can technically be drafted concurrently, though `105` cannot be *validated* until `104` is complete.
 - **Lane 2**: `109_SuccessMetrics` may be pre-drafted from `102_ProductGoalStandard`, but cannot be validated or frozen until `108_RequirementsStandard` is frozen.
 
-## 6. Retry & Recovery Rules
+## 7. Retry & Recovery Rules
 If an AI Agent or Human encounters an error during execution:
 - **Validation Failure (Syntax/Structure)**: 
   - *Retry Rule*: AI automatically retries up to 3 times, explicitly targeting the failed section.
@@ -71,26 +79,37 @@ If an AI Agent or Human encounters an error during execution:
   - *Scenario*: `110_Assumptions` discovers a risk that invalidates `101_Problem`.
   - *Recovery*: AI halts all downstream execution. AI reverts `101` through `110` to `Status: Draft/In Review`. AI prompts the Human PM to rewrite `101`.
 
-## 7. AI Hydration Pipeline
-Before an AI Agent generates an artifact, it MUST hydrate its context window following this exact pipeline:
+## 8. AI Hydration Pipeline & Context Loading Strategy
+Before an AI Agent generates an artifact, it MUST hydrate its context window following this exact pipeline and priority load order:
+
+**Context Priority Map:**
+- **Priority 1**: Base Contracts (`050`, `051`)
+- **Priority 2**: Architecture & Execution Manifests (`052`, `053`)
+- **Priority 3**: Target Standard
+- **Priority 4**: Upstream Artifacts
+- **Priority 5**: User Prompt
 
 ```text
 [Hydration Start]
    ↓
-Load Base Contracts (050, 051)
-   ↓
-Load Execution Rules (053)
-   ↓
-Load Target Artifact Standard (e.g., 104)
+Load Priority 1, 2, and 3
    ↓
 Query 052 Context Matrix for Mandatory Upstream Artifacts
    ↓
-Load Upstream Artifact Instances (e.g., Vision.md, Problem.md)
+Load Priority 4 and 5
    ↓
 [Execute Generation]
 ```
 
-## 8. Execution Checkpoints
+## 9. Context Optimization (Token Budget Strategy)
+If the total context exceeds the LLM context limit:
+1. Never compress Required Context.
+2. Compress Optional Context first.
+3. Preserve all Traceability IDs.
+4. Preserve all Metrics verbatim.
+5. Never summarize Principles.
+
+## 10. Execution Checkpoints
 To prevent cascading errors in massive enterprise products, execution is grouped into three mandatory human-review checkpoints.
 
 - **Checkpoint A (Strategic Alignment)**: `100` through `103`.
@@ -100,46 +119,56 @@ To prevent cascading errors in massive enterprise products, execution is grouped
 - **Checkpoint C (Solution Mechanics)**: `108` through `111`.
   - *Gate*: Enterprise Architecture Review Board must sign off to seal the Discovery Layer.
 
-## 9. Execution Inputs & Outputs
+## 11. Execution Inputs & Outputs
 - **Inputs**: Absolute file paths to all upstream dependencies mapped in `052`, plus user prompts.
 - **Outputs**: A successfully linted markdown file adhering to the target `.template.md`.
 
-## 10. Execution State Model
+## 12. Execution State Model
 Every generative task follows this lifecycle:
 - `Queued` -> `Context Hydrated` -> `Generating` -> `Validating` -> `Awaiting Review` -> `Complete`.
 
-## 11. Human Intervention Rules
+## 13. Human Intervention Rules
 If an AI agent triggers a Quality Gate failure or exceeds 3 structural retry limits, the agent MUST pause execution and request human intervention. The human must resolve the conflict manually in the markdown file or update the prompt context before resuming the swarm.
 
-## 12. Waiver Handling
+## 14. Waiver Handling
 If a strict architectural rule must be broken (e.g., bypassing a Quality Gate for an urgent experiment), the waiver MUST be documented in the Git commit message and approved by the Gate Owner defined in the standard. AI cannot grant waivers.
 
-## 13. Execution Event Log
+## 15. Execution Event Log
 AI Agents MUST emit deterministic logs for every execution step. The logs must record: Agent ID, Artifact ID, Timestamp, Upstream nodes loaded, Token count, and Validation result. 
 
-## 14. Execution Metadata Contract
+## 16. Execution Metadata Contract
 When an artifact passes execution validation, the AI MUST automatically update the `Updated: [Date]` and `Status: In Review` metadata fields in the YAML frontmatter.
 
-## 15. Agent Role Matrix
+## 17. Agent Role Matrix
 To maintain high quality, execution should be distributed among specialized agent personas:
-- **Strategy Agent**: Executes 100, 101, 102, 103.
-- **Research Agent**: Executes 104, 105, 106, 107.
-- **Product Logic Agent**: Executes 108, 109, 110.
-- **Validation Agent**: Executes 111 (Discovery Freeze).
 
-## 16. Failure Classification
+| Role | Responsibility | Reads | Writes |
+| :--- | :--- | :--- | :--- |
+| **Strategy Agent** | Vision/Goals | 100-102 | 100-103 |
+| **Research Agent** | Personas/Journeys | 100-104 | 104-107 |
+| **Product Agent** | Requirements | 100-108 | 108-110 |
+| **Validation Agent** | QA/Traceability | All | 111 |
+
+## 18. Failure Classification
 - **Transient Error**: LLM syntax hallucination (Auto-retry).
 - **Semantic Error**: Quality Gate blocked by poor logic (Human intervention).
 - **Fatal Error**: Upstream dependency was unexpectedly deleted or invalidated (Halt execution).
 
-## 17. Timeout / Stale Execution Rules
+## 19. Timeout / Stale Execution Rules
 If an artifact remains in `Status: In Review` for more than 14 days, the execution is considered Stale. The artifact MUST be re-validated against upstream dependencies before final freezing, in case upstream data shifted during the wait.
 
-## 18. Completion Criteria
+## 20. Completion Criteria
 An execution job is complete when the artifact is successfully written to disk, passes the `050` validation contract, and is elevated to `Status: In Review` or `Frozen`.
 
-## 19. Success Criteria
+## 21. Success Criteria
 AI swarms can execute `100` through `111` for a net-new product with less than a 5% human intervention rate due to logical conflict.
 
-## 20. Exit Criteria
-This `053_DiscoveryExecutionRules.md` manifest is fully adopted by CI/CD pipelines and multi-agent orchestration codebases.
+## 22. Exit Criteria
+This manifest may transition to Frozen only if:
+- [x] Execution flow verified
+- [x] Hydration pipeline verified
+- [x] Retry model verified
+- [x] Failure model verified
+- [x] Parallel execution verified
+- [x] Human intervention rules verified
+- [x] Architecture Board approval
