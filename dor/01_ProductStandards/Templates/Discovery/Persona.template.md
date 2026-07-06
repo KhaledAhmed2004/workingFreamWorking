@@ -10,7 +10,7 @@ Approver: [Approver Name]
 Created: [YYYY-MM-DD]
 Updated: [YYYY-MM-DD]
 Artifact ID: [Unique ID]
-Depends On: [Stakeholder Artifact ID]
+Depends On: [Problem Artifact ID], [Principles Artifact ID], [Stakeholder Artifact ID]
 Next Artifact: [JTBD Document]
 ---
 
@@ -32,13 +32,24 @@ Next Artifact: [JTBD Document]
 
 ## [Persona Name] (e.g., Clinical Clara)
 - **Persona ID**: [e.g., PER-001]
+- **Persona Version ID**: [e.g., v1.0, v1.1]
+- **Persona Status**: [Active / Candidate / Merged / Archived]
 - **Stakeholder ID**: [e.g., STK-001] (MUST map back to 104)
 - **Role / Title**: [e.g., Senior ICU Nurse]
 - **Demographics**: [Age, Location, Education - ONLY if statistically relevant]
 - **Behavioral Traits**: [e.g., Tech-savvy, Time-poor, Detail-oriented]
 - **Psychographics**: [Motivations, Frustrations, Cognitive Load constraints]
-- **Operating Environment**: [Where do they use the product? e.g., Noisy ER, sterile gloves, intermittent Wi-Fi]
+- **Operating Environment**: [Where do they use the product? e.g., Noisy ER, sterile gloves]
 - **Tech Fluency**: [Low / Medium / High / Expert]
+- **Goals**: [Specific objectives for the persona]
+- **Pain Points**: [Current blockers]
+- **Needs**: [Must-haves to succeed]
+- **Frictions**: [Things that slow them down]
+- **Success Definition**: [What constitutes a 'win' for them]
+- **Accessibility / Inclusion Needs**: [e.g., colorblindness, large text, screen readers]
+- **Evidence Source**: [e.g., 2026 User Interviews, Analytics Data]
+- **Research Method**: [Interview / Observation / Survey / Analytics / Shadowing / Diary Study / Support Tickets]
+- **Confidence Level**: [Validated / High / Medium / Low]
 
 *(Repeat Persona Card for each Primary Persona)*
 
@@ -47,6 +58,8 @@ Next Artifact: [JTBD Document]
 
 ## [Persona Name]
 - **Persona ID**: [e.g., PER-002]
+- **Persona Version ID**: [...]
+- **Persona Status**: [...]
 - **Stakeholder ID**: [e.g., STK-005] 
 - **Role / Title**: [e.g., Compliance Auditor]
 - **Demographics**: [...]
@@ -54,6 +67,15 @@ Next Artifact: [JTBD Document]
 - **Psychographics**: [...]
 - **Operating Environment**: [...]
 - **Tech Fluency**: [...]
+- **Goals**: [...]
+- **Pain Points**: [...]
+- **Needs**: [...]
+- **Frictions**: [...]
+- **Success Definition**: [...]
+- **Accessibility / Inclusion Needs**: [...]
+- **Evidence Source**: [...]
+- **Research Method**: [...]
+- **Confidence Level**: [...]
 
 *(Repeat Persona Card for each Secondary Persona)*
 
@@ -62,16 +84,26 @@ Next Artifact: [JTBD Document]
 
 ## [Persona Name] (e.g., The Malicious Scraper)
 - **Persona ID**: [e.g., PER-003]
+- **Persona Version ID**: [...]
+- **Persona Status**: [...]
 - **Stakeholder ID**: [e.g., STK-009] 
 - **Role / Title**: [e.g., Automated Bot]
 - **Behavioral Traits**: [e.g., High volume, random patterns]
 - **Psychographics**: [Financial gain via data theft]
 - **Operating Environment**: [Distributed cloud servers]
 - **Tech Fluency**: [Expert]
+- **Goals**: [...]
+- **Pain Points**: [...]
+- **Needs**: [...]
+- **Frictions**: [...]
+- **Success Definition**: [...]
+- **Evidence Source**: [...]
+- **Research Method**: [...]
+- **Confidence Level**: [...]
 
 <!-- SECTION GROUP: Empathy Mapping -->
 
-# 7. Behaviors & Habits
+# 7. Behavioral Patterns
 [A synthesized view of the collective habits of the primary personas. What software do they use today? How do they handle interruptions?]
 
 # 8. Psychological Profile

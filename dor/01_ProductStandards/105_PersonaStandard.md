@@ -3,7 +3,7 @@ Title: 105_PersonaStandard
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Draft
+Status: Frozen
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -11,11 +11,11 @@ Reviewer: Enterprise Architecture Review Board
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: N/A
-Last Reviewed: N/A
-Review Status: N/A
+Approval Date: 2026-07-06
+Last Reviewed: 2026-07-06
+Review Status: Approved
 Artifact ID: PS-105
-Depends On: 104_StakeholderStandard.md
+Depends On: 101_ProblemStandard.md, 103_ProductPrinciplesStandard.md, 104_StakeholderStandard.md
 Extends: 050_ProductStandardContract.md
 Base Contract: 050_ProductStandardContract.md
 Template Path: 01_ProductStandards/Templates/Discovery/Persona.template.md
@@ -33,13 +33,15 @@ Artifacts following this standard MUST pass these checks:
 ### Validation Rules
 - No orphan Personas.
 - Every Persona MUST have a unique `PER-ID` (e.g., PER-001).
-- Every Persona MUST explicitly trace to exactly one or more Stakeholder IDs (`STK-ID`) from `104`.
+- Every Persona MUST trace to at least one Stakeholder ID.
+- Primary Personas SHOULD trace to one Primary Stakeholder unless justified.
 - Every Primary Stakeholder in `104` MUST have at least one mapped Persona in `105`.
 
 ### Quality Gates
 - **QG-PER-001**: Reject if a Persona introduces macro-goals or organizational pain points not present in the parent Stakeholder Card.
 - **QG-PER-002**: Reject if a Persona lacks a distinct psychological or behavioral profile (rendering it just a duplicated stakeholder).
 - **QG-PER-003**: Reject if an Anti-Persona is missing for high-risk or adversarial stakeholder types.
+- **QG-PER-004**: Reject if persona traits are not backed by stakeholder data, research, interview evidence, or validated assumptions.
 
 ## 3. Core Components
 
@@ -51,20 +53,34 @@ Artifacts following this standard MUST pass these checks:
 ### 3.2 Persona Metadata Schema (The Persona Card)
 Every Persona MUST be modeled with this strict schema:
 - **Persona ID**: (e.g., PER-001)
-- **Stakeholder ID**: (e.g., STK-001, STK-002) - Array of parent stakeholders.
+- **Persona Version ID**: (e.g., v1.0, v1.1)
+- **Persona Status**: (Active / Candidate / Merged / Archived)
+- **Stakeholder ID**: (e.g., STK-001, STK-002)
 - **Name**: (Archetype Name, e.g., "Clinical Clara")
 - **Role / Title**: (e.g., Senior ICU Nurse)
 - **Demographics**: (Age, Location, Education - ONLY if it statistically impacts product usage)
 - **Behavioral Traits**: (e.g., Tech-savvy, Time-poor, Detail-oriented)
 - **Psychographics**: (Motivations, Frustrations, Cognitive Load constraints)
-- **Operating Environment**: (Where do they use the product? e.g., Noisy ER, sterile gloves, intermittent Wi-Fi)
+- **Operating Environment**: (Where do they use the product? e.g., Noisy ER, sterile gloves)
 - **Tech Fluency**: (Low / Medium / High / Expert)
+- **Goals**: (Specific objectives for the persona)
+- **Pain Points**: (Current blockers)
+- **Needs**: (Must-haves to succeed)
+- **Frictions**: (Things that slow them down)
+- **Success Definition**: (What constitutes a 'win' for them)
+- **Accessibility / Inclusion Needs**: (e.g., colorblindness, large text, screen readers)
+- **Evidence Source**: (e.g., 2026 User Interviews, Analytics Data)
+- **Research Method**: (Interview / Observation / Survey / Analytics / Shadowing / Diary Study / Support Tickets)
+- **Confidence Level**: (Validated / High / Medium / Low)
 
 ## 4. Output Contract
 To guarantee deterministic AI orchestration, this artifact explicitly produces the following machine-readable assets for downstream nodes:
-- **Persona Registry** (Used by `106_JTBD` and `107_Journey`)
-- **Empathy Map** (Used by UX Architecture and `108_Requirements`)
-- **Anti-Persona Definitions** (Used by `110_Assumptions` for risk mitigation)
+- **Persona Registry**
+- **Empathy Map**
+- **Behavioral Constraints**
+- **Accessibility Constraints**
+- **Operating Environment Constraints**
+- **Anti-Persona Definitions**
 
 ## 5. Traceability
 Every Persona MUST trace back to:
@@ -73,7 +89,8 @@ Every Persona MUST trace back to:
 ## 6. Context & AI Prompts
 ### Hydration Rules
 - AI Swarms MUST NOT infer or hallucinate Personas that do not explicitly map to a validated `STK-ID` from `104`.
-- AI MUST synthesize behavioral traits logically derived from the Stakeholder's defined pain points and goals (e.g., if the stakeholder goal is "speed", the persona trait might be "impatient with multi-step workflows").
+- AI MUST NOT create demographic details unless they materially affect product behavior, access, risk, or usability.
+- AI MUST synthesize behavioral traits logically derived from the Stakeholder's defined pain points and goals.
 
 ### Memory TTL
 - `Permanent` for the duration of the Human Context Layer generation.
@@ -97,7 +114,7 @@ Every Persona artifact MUST use these exact headings.
 - # 6. Anti-Personas
 
 <!-- SECTION GROUP: Empathy Mapping -->
-- # 7. Behaviors & Habits
+- # 7. Behavioral Patterns
 - # 8. Psychological Profile
 - # 9. Operating Environment
 
