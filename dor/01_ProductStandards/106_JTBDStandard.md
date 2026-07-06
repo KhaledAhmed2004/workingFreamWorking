@@ -3,7 +3,7 @@ Title: 106_JTBDStandard
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Draft
+Status: Frozen
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -11,11 +11,11 @@ Reviewer: Enterprise Architecture Review Board
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: N/A
-Last Reviewed: N/A
-Review Status: N/A
+Approval Date: 2026-07-06
+Last Reviewed: 2026-07-06
+Review Status: Approved
 Artifact ID: PS-106
-Depends On: 101_ProblemStandard.md, 105_PersonaStandard.md
+Depends On: 101_ProblemStandard.md, 103_ProductPrinciplesStandard.md, 105_PersonaStandard.md
 Extends: 050_ProductStandardContract.md
 Base Contract: 050_ProductStandardContract.md
 Template Path: 01_ProductStandards/Templates/Discovery/JTBD.template.md
@@ -46,6 +46,7 @@ Artifacts following this standard MUST pass these checks:
 - **QG-JTBD-001**: Reject if a Job statement contains a specific feature, technology, or UI solution (e.g., "I want a dashboard" vs "I want to see my patient's status at a glance").
 - **QG-JTBD-002**: Reject if a Job lacks clear emotional or social dimensions.
 - **QG-JTBD-003**: Reject if the Job is phrased from the Persona's explicit identity rather than the situational context (e.g., use "When preparing medication..." NOT "Clinical Clara needs...").
+- **QG-JTBD-004**: Reject if a Primary Job has no Success Metric or Evidence Source.
 
 ## 3. Core Components
 
@@ -54,6 +55,9 @@ Every Job MUST be modeled with this strict schema:
 - **JTBD ID**: (e.g., JTBD-001)
 - **Job Version ID**: (e.g., v1.0, v1.1)
 - **Job Status**: (Active / Candidate / Merged / Archived)
+- **Priority**: (Critical / High / Medium / Low)
+- **Job Frequency**: (Daily / Weekly / Monthly / Event-driven)
+- **Job Criticality**: (Safety-critical / Business-critical / Convenience)
 - **Performed By**: (Array of `PER-ID`s, e.g., PER-001, PER-002)
 - **Job Statement**: The core syntax -> "When [situation], I want to [motivation], so I can [expected outcome]."
 - **Functional Need**: (What practical task must be accomplished)
@@ -61,6 +65,7 @@ Every Job MUST be modeled with this strict schema:
 - **Social Need**: (How the persona wants to be perceived by others)
 - **Current Friction**: (Why is this hard today? Mapped from `105` Frictions)
 - **Success Metric**: (How we objectively know the job is done well)
+- **Evidence Source**: (e.g., Interview Data, Process Analysis)
 
 ## 4. Output Contract
 To guarantee deterministic AI orchestration, this artifact explicitly produces the following machine-readable assets for downstream nodes:
@@ -98,7 +103,7 @@ Every JTBD artifact MUST use these exact headings.
 <!-- SECTION GROUP: JTBD Registry -->
 - # 4. Primary Jobs
 - # 5. Secondary Jobs
-- # 6. Related Jobs
+- # 6. Out of Scope / Related Jobs
 
 <!-- SECTION GROUP: Needs Analysis -->
 - # 7. Functional Needs Summary

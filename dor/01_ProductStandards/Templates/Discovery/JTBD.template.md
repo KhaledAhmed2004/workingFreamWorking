@@ -10,7 +10,7 @@ Approver: [Approver Name]
 Created: [YYYY-MM-DD]
 Updated: [YYYY-MM-DD]
 Artifact ID: [Unique ID]
-Depends On: [Problem Artifact ID], [Persona Artifact ID]
+Depends On: [Problem Artifact ID], [Principles Artifact ID], [Persona Artifact ID]
 Next Artifact: [Journey Document]
 ---
 
@@ -34,6 +34,9 @@ Next Artifact: [Journey Document]
 - **JTBD ID**: [e.g., JTBD-001]
 - **Job Version ID**: [e.g., v1.0]
 - **Job Status**: [Active / Candidate / Merged / Archived]
+- **Priority**: [Critical / High / Medium / Low]
+- **Job Frequency**: [Daily / Weekly / Monthly / Event-driven]
+- **Job Criticality**: [Safety-critical / Business-critical / Convenience]
 - **Performed By**: [e.g., PER-001, PER-002] (Must map to `105`)
 - **Job Statement**: When [situation], I want to [motivation], so I can [expected outcome].
 - **Functional Need**: [What practical task must be accomplished]
@@ -41,6 +44,7 @@ Next Artifact: [Journey Document]
 - **Social Need**: [How the persona wants to be perceived by others]
 - **Current Friction**: [Why is this hard today?]
 - **Success Metric**: [How we objectively know the job is done well]
+- **Evidence Source**: [e.g., Interview Data, Process Analysis]
 
 *(Repeat Job Card for each Primary Job)*
 
@@ -51,6 +55,9 @@ Next Artifact: [Journey Document]
 - **JTBD ID**: [e.g., JTBD-002]
 - **Job Version ID**: [...]
 - **Job Status**: [...]
+- **Priority**: [...]
+- **Job Frequency**: [...]
+- **Job Criticality**: [...]
 - **Performed By**: [...]
 - **Job Statement**: When [situation], I want to [motivation], so I can [expected outcome].
 - **Functional Need**: [...]
@@ -58,10 +65,11 @@ Next Artifact: [Journey Document]
 - **Social Need**: [...]
 - **Current Friction**: [...]
 - **Success Metric**: [...]
+- **Evidence Source**: [...]
 
 *(Repeat Job Card for each Secondary Job)*
 
-# 6. Related Jobs
+# 6. Out of Scope / Related Jobs
 [Adjacent tasks that the persona performs but that our product may intentionally choose not to solve (useful for scoping and partnerships).]
 
 ## [Job Name]
