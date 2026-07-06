@@ -29,38 +29,52 @@ Next Artifact: [Goal Document]
 # 5. Current State
 [Describe how users currently attempt to solve, bypass, or endure this problem. What is the status quo?]
 
-# 6. User Impact
+# 6. Desired State
+[Describe the ideal scenario where this problem no longer exists. What does the perfect workflow look like?]
+
+# 7. Gap Analysis
+[Analyze the exact delta between the Current State and the Desired State. What is preventing users from reaching the desired state today?]
+
+# 8. User Impact
 [Detail the emotional, temporal, or financial toll on the user. How does this degrade their experience?]
 
-# 7. Business Impact
+# 9. Business Impact
 [Detail the cost to the enterprise. Think in terms of lost revenue, increased churn, compliance risk, or bloated support load.]
 
-# 8. Root Cause Analysis
+# 10. Root Cause Analysis
 [Analyze the underlying "Why". Use the 5 Whys methodology or a similar framework to trace the symptom back to the root cause.]
 
-# 9. Market Context
+# 11. Evidence
+[Provide the raw data or research proving the problem exists.]
+- **Quantitative**: [Analytics, failure rates, drop-off percentages, financial loss metrics.]
+- **Qualitative**: [User interview quotes, survey results, direct observation notes.]
+
+# 12. Market Context
 [How are competitors addressing this problem? Is there an industry-standard expectation?]
 
-# 10. Key Metrics
-[Provide verifiable data proving the problem exists. Include failure rates, drop-off percentages, or financial loss metrics.]
+# 13. Affected Stakeholders
+[List all parties impacted by this problem (e.g., Patient, Doctor, Caregiver, Insurance, Support Team).]
 
-# 11. Out of Scope
+# 14. Risk of Inaction
+[What happens if the enterprise chooses NOT to solve this problem? Detail revenue loss, brand damage, or compliance risks.]
+
+# 15. Out of Scope
 [Explicitly list related or adjacent problems that are NOT being analyzed or solved by this initiative.]
 
-# 12. Constraints
+# 16. Constraints
 [List environmental, regulatory, or technical limitations that affect this problem space.]
 
-# 13. Assumptions
+# 17. Assumptions
 [List any unverified beliefs about the problem that need future validation.]
 
-# 14. Dependencies
+# 18. Dependencies
 [List upstream artifacts (like the Vision) or external data sources required to validate this problem.]
 
-# 15. Acceptance Criteria
+# 19. Acceptance Criteria
 [What specific conditions must be met for Executive Stakeholders to approve and freeze this problem statement?]
 
-# 16. Traceability
+# 20. Traceability
 [List graph linkages specifically mapping back to the approved Vision Document.]
 
-# 17. AI Context
-[Special instructions for downstream AI agents reading this file. Example: "When generating PRDs from this artifact, ensure every proposed feature directly targets the root cause identified in Section 8."]
+# 21. AI Context
+[Special instructions for downstream AI agents reading this file. Example: "When generating PRDs from this artifact, ensure every proposed feature directly targets the root cause identified in Section 10."]
