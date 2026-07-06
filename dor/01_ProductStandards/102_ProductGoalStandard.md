@@ -3,7 +3,7 @@ Title: 102_ProductGoalStandard
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Draft
+Status: Frozen
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -11,11 +11,11 @@ Reviewer: Enterprise Architecture Review Board
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: N/A
-Last Reviewed: N/A
-Review Status: N/A
+Approval Date: 2026-07-06
+Last Reviewed: 2026-07-06
+Review Status: Approved
 Artifact ID: PS-102
-Depends On: 101_ProblemStandard.md
+Depends On: 100_VisionStandard.md, 101_ProblemStandard.md
 Extends: 050_ProductStandardContract.md
 Standard Type: Derived Product Standard
 Base Contract: 050_ProductStandardContract.md
@@ -79,15 +79,17 @@ Every `ProductGoals.md` artifact MUST implement the following grouped sections:
 - Problem Resolution Mapping
 
 **Product Goals**
-- Primary Product Goal (The single most important outcome)
-- Secondary Product Goals (Supporting outcomes)
-- Target Metrics (KPIs defining success)
-- Time Horizon (When must this be achieved)
+- Goal Hierarchy
+- Primary Product Goal
+- Secondary Product Goals
+- Target Metrics
+- Measurement Method
+- Time Horizon
 
 **Constraints & Boundaries**
-- Anti-Goals (What we explicitly will NOT try to achieve)
-- Goal Dependencies (What must happen externally for these goals to be met)
-- Success Risks (Factors that could derail these goals)
+- Anti-Goals
+- Goal Dependencies
+- Success Risks
 
 **Governance & Execution**
 - Acceptance Criteria
@@ -96,12 +98,13 @@ Every `ProductGoals.md` artifact MUST implement the following grouped sections:
 
 ## 12. Validation Overrides
 - **Semantic**: Zero solutionizing. No features, UI components, or technical stacks may be proposed. Goals must follow the SMART framework (Specific, Measurable, Achievable, Relevant, Time-bound).
-- **Completeness**: Every declared Goal MUST have an associated Target Metric.
-- **Relationship**: The goals MUST explicitly map to the root cause defined in `Problem.md` and the North Star Metric defined in `Vision.md`.
+- **Completeness**: Every declared Goal MUST have an associated Target Metric and a clearly defined Measurement Method.
+- **Relationship**: The Goal Hierarchy MUST explicitly map to the root cause defined in `Problem.md` and the North Star Metric defined in `Vision.md`.
 - **Consistency**: Anti-Goals must not contradict the Primary Product Goal.
 
 ## 13. Acceptance Criteria
 - Goals validated by executive stakeholders as ambitious yet achievable.
+- Measurement Methods verified by Data/Analytics Team.
 - Artifact peer-reviewed and frozen.
 
 ## 14. Quality Gate Overrides
@@ -110,15 +113,15 @@ Every `ProductGoals.md` artifact MUST implement the following grouped sections:
   - **Blocking**: Yes
   - **Evidence Required**: Complete Document.
   - **Owner**: Enterprise Architecture Review Board
-  - **Automation**: AI Semantic Validator to scan for solutionizing verbs ("build feature X", "add button Y").
+  - **Automation**: AI Semantic Validator to scan for solutionizing verbs.
   - **Decision**: Reject immediately if the document proposes a feature or technical solution.
 - **Gate ID**: `QG-GOAL-002`
   - **Severity**: High
   - **Blocking**: Yes
-  - **Evidence Required**: `Target Metrics` section.
+  - **Evidence Required**: `Target Metrics` and `Measurement Method` sections.
   - **Owner**: Data / Analytics Lead
   - **Automation**: Check if Target Metrics are quantifiable and time-bound.
-  - **Decision**: Reject if goals are vague, unmeasurable, or lack a Time Horizon.
+  - **Decision**: Reject if goals are unmeasurable, lack a Time Horizon, or lack a clear Measurement Method.
 
 ## 15. Traceability Overrides
 - **Consumes**: `Vision.md`, `Problem.md`
@@ -138,12 +141,12 @@ Every `ProductGoals.md` artifact MUST implement the following grouped sections:
 - E.g., Custom metric tracking dashboards (e.g., Amplitude/Mixpanel links).
 
 ## 18. Success Criteria
-100% of product initiatives have clear, quantifiable, outcome-based goals that act as the deterministic measure of success for downstream engineering efforts.
+100% of product initiatives have clear, quantifiable, outcome-based goals with predefined measurement methods.
 
 ## 19. AI Contract Overrides
 - **Generation**: Agent MUST enforce the SMART framework for all goals. If a human user proposes a feature as a goal, the AI must explicitly push back and ask for the underlying *outcome*.
 - **Validation**: MUST flag the artifact if it detects roadmap items, epics, or user story structures.
-- **Review**: MUST verify that `Corporate OKR Mapping` logically connects to the enterprise strategy.
+- **Review**: MUST verify that `Goal Hierarchy` logically cascades from the North Star Metric to Secondary Goals.
 - **Consumption**: Downstream PRD agents MUST link every proposed feature to at least one metric defined in `Target Metrics`.
 - **Reasoning**: Log the justification for selecting the Primary Product Goal over other alternatives.
 - **Output**: MUST respect the `<!-- SECTION GROUP: ... -->` HTML comments for the Section Registry.

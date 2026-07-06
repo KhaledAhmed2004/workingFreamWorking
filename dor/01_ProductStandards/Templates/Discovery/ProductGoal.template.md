@@ -10,7 +10,7 @@ Approver: [Approver Name]
 Created: [YYYY-MM-DD]
 Updated: [YYYY-MM-DD]
 Artifact ID: [Unique ID]
-Depends On: [Problem Artifact ID]
+Depends On: [Vision Artifact ID], [Problem Artifact ID]
 Next Artifact: [Principles Document]
 ---
 
@@ -35,36 +35,42 @@ Next Artifact: [Principles Document]
 
 <!-- SECTION GROUP: Product Goals -->
 
-# 6. Primary Product Goal
+# 6. Goal Hierarchy
+[Describe the structural alignment of the goals. Map how the North Star Alignment cascades into the Primary Goal, Secondary Goals, and Supporting Metrics.]
+
+# 7. Primary Product Goal
 [The single most important, overarching outcome this product must achieve. Must be SMART (Specific, Measurable, Achievable, Relevant, Time-bound).]
 
-# 7. Secondary Product Goals
+# 8. Secondary Product Goals
 [Supporting outcomes that contribute to the primary goal or address secondary personas.]
 
-# 8. Target Metrics
+# 9. Target Metrics
 [Provide the specific KPIs (Key Performance Indicators) that will measure the success of the goals. Example: "Reduce data reconciliation time by 40%".]
 
-# 9. Time Horizon
+# 10. Measurement Method
+[How will each metric be measured? Analytics tool, survey, operational report, clinical record, etc.]
+
+# 11. Time Horizon
 [When must these goals and metrics be achieved? (e.g., Q4 2026, or 6 months post-launch).]
 
 <!-- SECTION GROUP: Constraints & Boundaries -->
 
-# 10. Anti-Goals
+# 12. Anti-Goals
 [What are we explicitly NOT trying to achieve? (e.g., "We are NOT trying to increase Daily Active Users for this specific module").]
 
-# 11. Goal Dependencies
+# 13. Goal Dependencies
 [What must happen externally (e.g., in other teams or systems) for these goals to be attainable?]
 
-# 12. Success Risks
+# 14. Success Risks
 [What internal or external factors could derail the achievement of these goals?]
 
 <!-- SECTION GROUP: Governance & Execution -->
 
-# 13. Acceptance Criteria
+# 15. Acceptance Criteria
 [What specific conditions must be met for Executive Stakeholders to approve and freeze these goals?]
 
-# 14. Traceability
+# 16. Traceability
 [List graph linkages specifically mapping back to the approved Vision Document and Problem Document.]
 
-# 15. AI Context
-[Special instructions for downstream AI agents reading this file. Example: "When generating Epics from this artifact, ensure every Epic is explicitly tagged with at least one Target Metric from Section 8."]
+# 17. AI Context
+[Special instructions for downstream AI agents reading this file. Example: "When generating Epics from this artifact, ensure every Epic is explicitly tagged with at least one Target Metric from Section 9."]
