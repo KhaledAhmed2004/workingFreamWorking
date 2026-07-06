@@ -1,9 +1,9 @@
 ---
 Title: 101_ProblemStandard
-Artifact Version: 1.0
+Artifact Version: 2.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Frozen
+Status: Draft
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -11,9 +11,9 @@ Reviewer: Enterprise Architecture Review Board
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: 2026-07-06
-Last Reviewed: 2026-07-06
-Review Status: Approved
+Approval Date: N/A
+Last Reviewed: N/A
+Review Status: N/A
 Artifact ID: PS-101
 Depends On: 100_VisionStandard.md
 Extends: 050_ProductStandardContract.md
@@ -66,32 +66,46 @@ Governs the creation and validation of the `Problem.md` artifact within the Prod
 - **Domain**: Product Discovery
 - **Type**: Core Discovery Node
 
-## 11. Required Sections
-Every `Problem.md` artifact MUST implement:
-1. **Executive Summary**
-2. **Purpose**
-3. **Scope**
-4. **Problem Statement**
-5. **Current State**
-6. **Desired State**
-7. **Gap Analysis**
-8. **User Impact**
-9. **Business Impact**
-10. **Root Cause Analysis**
-11. **Evidence** (Quantitative & Qualitative)
-12. **Market Context**
-13. **Affected Stakeholders**
-14. **Risk of Inaction**
-15. **Out of Scope**
-16. **Constraints**
-17. **Assumptions**
-18. **Dependencies**
-19. **Acceptance Criteria**
-20. **Traceability**
-21. **AI Context**
+## 11. Section Registry
+Every `Problem.md` artifact MUST implement the following grouped sections:
+
+**Discovery Core**
+- Executive Summary
+- Purpose
+- Scope
+
+**Problem Analysis**
+- Problem Statement
+- Current State
+- Desired State
+- Gap Analysis
+
+**Impact & Evidence**
+- User Impact
+- Business Impact
+- Root Cause Analysis
+- Evidence (Quantitative & Qualitative)
+- Market Context
+
+**Stakeholders & Risk**
+- Affected Stakeholders
+- Risk of Inaction
+
+**Boundaries**
+- Out of Scope
+- Constraints
+- Assumptions
+- Dependencies
+
+**Governance & Execution**
+- Acceptance Criteria
+- Traceability
+- AI Context
 
 ## 12. Validation Overrides
 - **Semantic**: Zero solutionizing. No features, UI components, or technical stacks may be proposed.
+- **Completeness**: Gap Analysis MUST explicitly connect the Current State to the Desired State.
+- **Relationship**: The Root Cause Analysis MUST be proven by the Evidence section.
 - **Consistency**: The Business Impact must logically align with the Vision's North Star Metric.
 
 ## 13. Acceptance Criteria
@@ -102,31 +116,42 @@ Every `Problem.md` artifact MUST implement:
 - **Gate ID**: `QG-PROB-001`
   - **Severity**: Critical
   - **Blocking**: Yes
+  - **Evidence Required**: Complete Document.
+  - **Owner**: Enterprise Architecture Review Board
+  - **Automation**: AI Semantic Validator to scan for solutionizing verbs.
   - **Decision**: Reject immediately if the document proposes a feature or technical solution.
 - **Gate ID**: `QG-PROB-002`
   - **Severity**: High
   - **Blocking**: Yes
-  - **Decision**: Reject if the problem is based purely on assumption without verifiable evidence in the `Evidence` section.
+  - **Evidence Required**: `Evidence` section.
+  - **Owner**: Product Leadership
+  - **Automation**: Check if `Evidence` is populated with actual data metrics.
+  - **Decision**: Reject if the problem is based purely on assumption without verifiable evidence.
 
 ## 15. Traceability Overrides
 - **Consumes**: `Vision.md`
-- **Produces**: Context for `102_ProductGoalStandard` and `104_PersonaStandard`.
+- **Produces**: Context for `102_ProductGoalStandard`.
 - **Validates**: Vision viability.
 
 ## 16. AI Context Overrides
-- **Context Priority**: High (Critical for empathy and requirement generation).
+- **Hydration Priority**: High
+- **Memory TTL**: Permanent (for the duration of Epic and Story generation).
 - **Required Context**: `Problem Statement`, `Gap Analysis`, `User Impact`, `Business Impact`.
 - **Forbidden Context**: Any implicit solutions hidden in the text.
-- **Compression Rules**: Retain exact metrics from the `Evidence` section.
+- **Summarization**: Keep the `Root Cause Analysis` verbatim.
+- **Compression**: Do NOT compress the `Evidence` metrics.
 
 ## 17. Extension Points
-- Teams may append specific `Data Queries` (e.g., SQL snippets) used to generate Evidence.
+- **Reserved Extension IDs**: `PROB-EXT-001` to `PROB-EXT-099`.
+- E.g., Specific `Data Queries` (e.g., SQL snippets) used to generate Evidence.
 
 ## 18. Success Criteria
 100% of product initiatives are traced back to a clearly documented, data-backed Problem artifact that contains zero solution bias.
 
 ## 19. AI Contract Overrides
-- **AI Generation Rules**: Agent MUST enforce the "5 Whys" methodology for Root Cause Analysis and structure the `Gap Analysis` as Current vs Desired.
-- **AI Validation Rules**: MUST flag the artifact if it detects verbs like "build", "create", "implement", or UI terminology.
-- **AI Review Rules**: MUST verify that `Risk of Inaction` logically connects to `Business Impact`.
-- **AI Constraints**: MUST NOT invent data or metrics for the `Evidence` section. If missing, it must output a placeholder and prompt the human.
+- **Generation**: Agent MUST enforce the "5 Whys" methodology for Root Cause Analysis.
+- **Validation**: MUST flag the artifact if it detects verbs like "build", "create", "implement", or UI terminology.
+- **Review**: MUST verify that `Risk of Inaction` logically connects to `Business Impact`.
+- **Consumption**: Downstream PRD agents MUST link every feature directly to the `Problem Statement`.
+- **Reasoning**: Log the mapping between Evidence and Root Cause.
+- **Output**: MUST respect the `<!-- SECTION GROUP: ... -->` HTML comments for the Section Registry.

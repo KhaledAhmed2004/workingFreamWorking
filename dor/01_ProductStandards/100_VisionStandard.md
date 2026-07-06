@@ -1,9 +1,9 @@
 ---
 Title: 100_VisionStandard
-Artifact Version: 1.0
+Artifact Version: 2.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Frozen
+Status: Draft
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -11,9 +11,9 @@ Reviewer: Enterprise Architecture Review Board
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: 2026-07-06
-Last Reviewed: 2026-07-06
-Review Status: Approved
+Approval Date: N/A
+Last Reviewed: N/A
+Review Status: N/A
 Artifact ID: PS-100
 Depends On: 00_ProductStandardsManifest.md
 Extends: 050_ProductStandardContract.md
@@ -64,32 +64,44 @@ Governs the creation, validation, and lifecycle of the `Vision.md` artifact. It 
 - **Domain**: Product Discovery
 - **Type**: Foundational Root Node
 
-## 11. Required Sections
-Every `Vision.md` artifact MUST implement:
-1. **Executive Summary**
-2. **Purpose**
-3. **Scope**
-4. **Vision Statement**
-5. **Vision Narrative**
-6. **Business Opportunity**
-7. **Customer Problem**
-8. **Target Audience**
-9. **Value Proposition**
-10. **Strategic Alignment**
-11. **Differentiation**
-12. **North Star Metric**
-13. **Success Criteria**
-14. **Out of Scope**
-15. **Constraints**
-16. **Assumptions**
-17. **Dependencies**
-18. **Acceptance Criteria**
-19. **Traceability**
-20. **AI Context**
+## 11. Section Registry
+Every `Vision.md` artifact MUST implement the following grouped sections:
+
+**Discovery Core**
+- Executive Summary
+- Purpose
+- Scope
+
+**Vision Mechanics**
+- Vision Statement
+- Vision Narrative
+- Business Opportunity
+- Customer Problem
+- Target Audience
+
+**Strategic Value**
+- Value Proposition
+- Strategic Alignment
+- Differentiation
+- North Star Metric
+- Success Criteria
+
+**Boundaries**
+- Out of Scope
+- Constraints
+- Assumptions
+- Dependencies
+
+**Governance & Execution**
+- Acceptance Criteria
+- Traceability
+- AI Context
 
 ## 12. Validation Overrides
 - **Semantic**: Vision Statement must be under 3 sentences. Exactly ONE North Star Metric must be defined.
 - **Consistency**: Narrative must logically align with the North Star Metric.
+- **Completeness**: Strategic Alignment MUST map to a verifiable corporate objective.
+- **Relationship**: The "Customer Problem" section must directly act as the input seed for `101_ProblemStandard`.
 
 ## 13. Acceptance Criteria
 - Stakeholder consensus achieved.
@@ -99,10 +111,16 @@ Every `Vision.md` artifact MUST implement:
 - **Gate ID**: `QG-VIS-001`
   - **Severity**: High
   - **Blocking**: Yes
+  - **Evidence Required**: `Strategic Alignment` and `North Star Metric` sections.
+  - **Owner**: Executive Board
+  - **Automation**: CI/CD Regex check for Corporate OKR tags.
   - **Decision**: Reject if the North Star Metric contradicts corporate strategy.
 - **Gate ID**: `QG-VIS-002`
   - **Severity**: Critical
   - **Blocking**: Yes
+  - **Evidence Required**: Complete Document.
+  - **Owner**: Enterprise Architecture Review Board
+  - **Automation**: AI Semantic Validator.
   - **Decision**: Reject if UI features or technical schemas are leaked into the Vision.
 
 ## 15. Traceability Overrides
@@ -111,18 +129,24 @@ Every `Vision.md` artifact MUST implement:
 - **Validates**: Alignment with Executive Mandate.
 
 ## 16. AI Context Overrides
-- **Context Priority**: High (Must be preserved in long-term memory).
+- **Hydration Priority**: Critical
+- **Memory TTL**: Permanent (for the duration of the Epic generation).
 - **Required Context**: `Vision Statement`, `North Star Metric`, `Out of Scope`.
 - **Forbidden Context**: Ignore any tactical implementation hints buried in the narrative.
-- **Compression Rules**: Retain verbatim the `North Star Metric`.
+- **Summarization**: Keep the `Vision Statement` completely verbatim.
+- **Compression**: Do NOT compress the `North Star Metric`.
 
 ## 17. Extension Points
-- Custom `Compliance Validation` blocks for regulated domains (e.g., HIPAA mapping).
+- **Reserved Extension IDs**: `VIS-EXT-001` to `VIS-EXT-099`.
+- E.g., Custom `Compliance Validation` blocks for regulated domains (e.g., HIPAA mapping).
 
 ## 18. Success Criteria
 100% of enterprise products have a machine-readable `Vision.md` that perfectly hydrates downstream PRD generation.
 
 ## 19. AI Contract Overrides
-- **AI Validation Rules**: MUST reject artifact if technical architecture or UI/UX implementation details are present.
-- **AI Review Rules**: MUST map the `Vision Narrative` against the `North Star Metric` and flag logical disconnections.
-- **AI Constraints**: MUST NOT invent North Star Metrics; MUST NOT overwrite `Strategic Alignment` without explicit executive overrides.
+- **Generation**: MUST recursively ask stakeholders to validate the `North Star Metric`.
+- **Validation**: MUST reject artifact if technical architecture or UI/UX implementation details are present.
+- **Review**: MUST map the `Vision Narrative` against the `North Star Metric` and flag logical disconnections.
+- **Consumption**: Downstream agents MUST strictly inherit the `Target Audience`.
+- **Reasoning**: Log why the `North Star Metric` was chosen over alternatives.
+- **Output**: MUST respect the `<!-- SECTION GROUP: ... -->` HTML comments for the Section Registry.

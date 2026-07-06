@@ -14,6 +14,8 @@ Depends On: [Strategy/Goal Artifact]
 Next Artifact: [Problem Document]
 ---
 
+<!-- SECTION GROUP: Discovery Core -->
+
 # 1. Executive Summary
 [A 30-second read for executives. Summarize the core problem, the proposed solution, and the ultimate business impact in one short paragraph.]
 
@@ -22,6 +24,8 @@ Next Artifact: [Problem Document]
 
 # 3. Scope
 [Define the exact boundaries of this vision. What markets, products, or user segments are covered under this vision?]
+
+<!-- SECTION GROUP: Vision Mechanics -->
 
 # 4. Vision Statement
 [A concise, 1-3 sentence pitch describing the ultimate future state this product will achieve.]
@@ -38,6 +42,8 @@ Next Artifact: [Problem Document]
 # 8. Target Audience
 [Who benefits directly? List the primary and secondary user personas or market segments.]
 
+<!-- SECTION GROUP: Strategic Value -->
+
 # 9. Value Proposition
 [Detail the unique value delivered to the user (User Value) and the value captured by the business (Business Value).]
 
@@ -53,6 +59,8 @@ Next Artifact: [Problem Document]
 # 13. Success Criteria
 [Macro-level milestones that must be achieved to fulfill the vision. (e.g., "Achieve 50% market penetration in Year 1").]
 
+<!-- SECTION GROUP: Boundaries -->
+
 # 14. Out of Scope
 [Explicitly state what this product will NOT do. This is critical for preventing scope creep.]
 
@@ -64,6 +72,8 @@ Next Artifact: [Problem Document]
 
 # 17. Dependencies
 [List external blockers, teams, or regulatory approvals required to achieve this vision.]
+
+<!-- SECTION GROUP: Governance & Execution -->
 
 # 18. Acceptance Criteria
 [What specific conditions must be met for Executive Stakeholders to approve and freeze this vision?]

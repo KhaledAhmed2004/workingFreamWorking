@@ -14,6 +14,8 @@ Depends On: [Vision Artifact ID]
 Next Artifact: [Goal Document]
 ---
 
+<!-- SECTION GROUP: Discovery Core -->
+
 # 1. Executive Summary
 [A 30-second read for executives. Summarize the core pain point, the affected users, and the business impact of leaving this unsolved.]
 
@@ -22,6 +24,8 @@ Next Artifact: [Goal Document]
 
 # 3. Scope
 [Define the boundaries of the problem space. What specific workflows or user segments are we analyzing?]
+
+<!-- SECTION GROUP: Problem Analysis -->
 
 # 4. Problem Statement
 [A concise 1-2 sentence definition of the core issue. Example: "Users spend 40% of their time manually reconciling data between System A and System B."]
@@ -34,6 +38,8 @@ Next Artifact: [Goal Document]
 
 # 7. Gap Analysis
 [Analyze the exact delta between the Current State and the Desired State. What is preventing users from reaching the desired state today?]
+
+<!-- SECTION GROUP: Impact & Evidence -->
 
 # 8. User Impact
 [Detail the emotional, temporal, or financial toll on the user. How does this degrade their experience?]
@@ -52,11 +58,15 @@ Next Artifact: [Goal Document]
 # 12. Market Context
 [How are competitors addressing this problem? Is there an industry-standard expectation?]
 
+<!-- SECTION GROUP: Stakeholders & Risk -->
+
 # 13. Affected Stakeholders
 [List all parties impacted by this problem (e.g., Patient, Doctor, Caregiver, Insurance, Support Team).]
 
 # 14. Risk of Inaction
 [What happens if the enterprise chooses NOT to solve this problem? Detail revenue loss, brand damage, or compliance risks.]
+
+<!-- SECTION GROUP: Boundaries -->
 
 # 15. Out of Scope
 [Explicitly list related or adjacent problems that are NOT being analyzed or solved by this initiative.]
@@ -69,6 +79,8 @@ Next Artifact: [Goal Document]
 
 # 18. Dependencies
 [List upstream artifacts (like the Vision) or external data sources required to validate this problem.]
+
+<!-- SECTION GROUP: Governance & Execution -->
 
 # 19. Acceptance Criteria
 [What specific conditions must be met for Executive Stakeholders to approve and freeze this problem statement?]
