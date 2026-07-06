@@ -35,12 +35,14 @@ Next Artifact: [Discovery Freeze Document]
 - **Type**: Assumption
 - **Category**: [e.g., Adoption]
 - **Description**: [Detailed description of the assumption]
-- **Impact**: [High / Medium / Low]
-- **Confidence**: [High / Medium / Low]
+- **Impact**: [Numeric 1-5 scale]
+- **Confidence**: [Validated / High / Medium / Low / Unknown]
 - **Owner**: [Who is responsible for validating this?]
 - **Validation Plan**: [How we will prove/disprove this (e.g., User testing in Sprint 2)]
-- **Traces To**: [e.g., REQ-010, PER-001]
 - **Status**: [Open / Validated / Invalidated]
+- **Last Reviewed Date**: [YYYY-MM-DD]
+- **Next Review Date**: [YYYY-MM-DD]
+- **Traces To**: [One or more source IDs from 100-109, e.g., REQ-010, PER-001]
 
 *(Repeat Card for each Assumption)*
 
@@ -50,14 +52,20 @@ Next Artifact: [Discovery Freeze Document]
 ## [Risk Title] (e.g., PHI Data Leak during Integration)
 - **ID**: [e.g., RISK-001]
 - **Type**: Risk
-- **Category**: [e.g., Privacy / Regulatory]
+- **Category**: [e.g., Privacy / Regulatory / Dependency / Third Party / Legal]
 - **Description**: [Detailed description of what could go wrong]
-- **Impact**: [High / Medium / Low]
-- **Likelihood**: [High / Medium / Low]
+- **Trigger**: [What event activates this risk?]
+- **Early Warning Indicators**: [Signals before the risk materializes]
+- **Impact**: [Numeric 1-5 scale]
+- **Likelihood**: [Numeric 1-5 scale]
+- **Initial Risk Score**: [Impact × Likelihood, e.g., 25]
 - **Owner**: [Who is responsible for mitigating this?]
 - **Mitigation Plan**: [Actionable steps to prevent or minimize the risk]
-- **Traces To**: [e.g., REQ-050]
+- **Residual Risk Score**: [Score after mitigation is applied]
 - **Status**: [Open / Mitigated / Accepted]
+- **Last Reviewed Date**: [YYYY-MM-DD]
+- **Next Review Date**: [YYYY-MM-DD]
+- **Traces To**: [One or more source IDs from 100-109, e.g., REQ-050]
 
 *(Repeat Card for each Risk)*
 
