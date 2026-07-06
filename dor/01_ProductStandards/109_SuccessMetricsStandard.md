@@ -3,7 +3,7 @@ Title: 109_SuccessMetricsStandard
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Draft
+Status: Frozen
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -11,11 +11,11 @@ Reviewer: Enterprise Architecture Review Board
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: N/A
-Last Reviewed: N/A
-Review Status: N/A
+Approval Date: 2026-07-06
+Last Reviewed: 2026-07-06
+Review Status: Approved
 Artifact ID: PS-109
-Depends On: 102_ProductGoalStandard.md, 107_JourneyStandard.md, 108_RequirementsStandard.md
+Depends On: 102_ProductGoalStandard.md, 103_ProductPrinciplesStandard.md, 107_JourneyStandard.md, 108_RequirementsStandard.md
 Extends: 050_ProductStandardContract.md
 Base Contract: 050_ProductStandardContract.md
 Template Path: 01_ProductStandards/Templates/Discovery/SuccessMetrics.template.md
@@ -36,12 +36,15 @@ Artifacts following this standard MUST pass these checks:
 ### Validation Rules
 - No vanity metrics (e.g., "Total registered users" without context). Every metric MUST be actionable.
 - Every metric MUST trace to at least one upstream artifact (`102`, `107`, or `108`).
+- The North Star Metric MUST trace directly to the North Star Metric defined in `100_VisionStandard`.
 - Every metric MUST have a defined baseline, target, and measurement method.
 
 ### Quality Gates
 - **QG-MET-001**: Reject if a metric cannot be objectively measured using an identified data source or research method.
 - **QG-MET-002**: Reject if the metric contradicts the `103_ProductPrinciplesStandard` (e.g., maximizing engagement when the principle is 'minimize time-in-app').
 - **QG-MET-003**: Reject if a Guardrail Metric is missing for any Primary KPI that poses a safety, compliance, or severe UX risk if over-optimized.
+- **QG-MET-004**: Reject if any Primary KPI has no Guardrail Metric.
+- **QG-MET-005**: Reject if Measurement Method exists but Data Source is undefined.
 
 ## 3. Core Components
 
@@ -57,13 +60,17 @@ Every Metric MUST be modeled with this strict schema:
 - **Metric Version ID**: (e.g., v1.0)
 - **Status**: (Active / Deprecated / Candidate)
 - **Category**: (North Star / Primary KPI / Capability Metric / Guardrail)
+- **Metric Type**: (Leading / Lagging)
 - **Name**: (e.g., "Handoff Error Rate")
 - **Description**: (What is being measured and why it matters)
 - **Baseline**: (Current state value. Use '0' or 'Unknown' if net-new)
 - **Target**: (The threshold for success)
-- **Measurement Method**: (How data is collected, e.g., System Logs, Monthly Survey, Amplitude Event)
+- **Measurement Method**: (How data is collected, e.g., Auto-tracking, Monthly Survey)
+- **Collection Frequency**: (Real-time / Daily / Weekly / Monthly / Quarterly)
+- **Data Source**: (System Logs / Survey / Analytics / Manual Audit / Research)
 - **Owner**: (Who is accountable for monitoring this? e.g., Clinical PM)
-- **Traces To**: (Array of IDs from `102`, `107`, or `108`)
+- **Risk of Misuse**: (How this metric could be gamed or misinterpreted)
+- **Traces To**: (Array of IDs from `100`, `102`, `107`, or `108`)
 - **Guarded By**: (Array of `MET-ID`s, if this is a Primary KPI)
 
 ## 4. Output Contract
@@ -74,6 +81,7 @@ To guarantee deterministic AI orchestration, this artifact explicitly produces t
 
 ## 5. Traceability
 Every Metric MUST trace back to its strategic or operational origin:
+- **Parent Vision**: (`VIS-ID` from `100_VisionStandard.md`)
 - **Parent Goal**: (`GOAL-ID` from `102_ProductGoalStandard.md`)
 - **Parent Moment of Truth**: (`STEP-ID` from `107_JourneyStandard.md`)
 - **Parent Requirement**: (`REQ-ID` from `108_RequirementsStandard.md`)
