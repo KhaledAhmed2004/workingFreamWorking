@@ -28,10 +28,14 @@ Next Artifact: [Persona Document]
 <!-- SECTION GROUP: Stakeholder Landscape -->
 
 # 4. Stakeholder Registry
-[The master catalog of all stakeholders using the Stakeholder Card schema.]
+[The master catalog of all stakeholders using the strict Stakeholder Card schema.]
 
 ## [Stakeholder Name]
+- **Stakeholder ID**: [e.g., STK-001]
+- **Lifecycle Status**: [Potential / Validated / Active / Deprecated]
 - **Category**: [Primary / Secondary / Tertiary / Adversarial / Operational / Strategic / Regulatory / External Partner / System Actor]
+- **Priority**: [Critical / High / Medium / Low]
+- **Health Status**: [Healthy / At Risk / Misaligned / Blocked]
 - **Description**: [Brief summary of their role]
 - **Goals**: [What they want to achieve]
 - **Pain Points**: [What currently blocks them]
@@ -39,9 +43,8 @@ Next Artifact: [Persona Document]
 - **Power**: [Low / Medium / High]
 - **Interest**: [Low / Medium / High]
 - **Decision Authority**: [Can they block the product?]
-- **Consumes**: [What data/value they need]
-- **Produces**: [What data/value they provide]
-- **Depends On**: [Other stakeholders]
+- **Relationship Types**: [Depends / Approves / Consumes / Produces / Regulates / Collaborates]
+- **Communication Owner**: [e.g., Product Manager, Compliance Lead]
 - **Success Definition**: [Measurable outcome]
 
 *(Repeat Stakeholder Card for each entity)*
@@ -82,11 +85,23 @@ Next Artifact: [Persona Document]
 
 <!-- SECTION GROUP: Governance -->
 
-# 15. Acceptance Criteria
+# 15. Ownership Rules
+[Who owns the relationships and mapping updates for these stakeholders?]
+
+# 16. Review Cadence
+[How often is this registry audited? e.g., Monthly, Quarterly?]
+
+# 17. Lifecycle
+[Rules for promoting a Potential stakeholder to Active, or deprecating one.]
+
+# 18. Escalation Path
+[If a stakeholder blocks the product, who resolves the conflict?]
+
+# 19. Acceptance Criteria
 [What conditions must be met for this stakeholder governance document to be approved and frozen?]
 
-# 16. Traceability
+# 20. Traceability
 [Link each stakeholder back to the specific Vision Segment, Problem Impact, Goal Ownership, and Principle Alignment.]
 
-# 17. AI Context
-[Special instructions for downstream AI agents reading this file. Example: "When generating Personas from this artifact, only synthesize Personas for Primary and Secondary stakeholders."]
+# 21. AI Context
+[AI Boundary Rule: AI MUST NOT infer Personas here. Persona synthesis belongs exclusively to 105. This document is strictly for identifying and governing stakeholders.]

@@ -1,9 +1,9 @@
 ---
-Title: 104_StakeholderStandard
+Title: 104_StakeholderGovernanceStandard
 Artifact Version: 1.0
 Framework Version: 1.0
 Supersedes: N/A
-Status: Draft
+Status: Frozen
 Phase: Product Standards Infrastructure
 Sprint: N/A
 Owner: Product Architecture Board
@@ -11,9 +11,9 @@ Reviewer: Enterprise Architecture Review Board
 Approver: Executive Board
 Created: 2026-07-06
 Updated: 2026-07-06
-Approval Date: N/A
-Last Reviewed: N/A
-Review Status: N/A
+Approval Date: 2026-07-06
+Last Reviewed: 2026-07-06
+Review Status: Approved
 Artifact ID: PS-104
 Depends On: 100_VisionStandard.md, 101_ProblemStandard.md, 102_ProductGoalStandard.md, 103_ProductPrinciplesStandard.md
 Extends: 050_ProductStandardContract.md
@@ -22,10 +22,10 @@ Template Path: 01_ProductStandards/Templates/Discovery/Stakeholder.template.md
 Next Artifact: 105_PersonaStandard.md
 ---
 
-# Stakeholder Standard
+# Stakeholder Governance Standard
 
 ## 1. Definition
-The `104_StakeholderStandard` is the root node of the Human Context Layer. It defines a rigid, enterprise-grade governance structure for cataloging every human, system, and regulatory entity impacted by the product. This standard prevents downstream duplication in `105_Persona` and `107_Journey` by acting as the single source of truth for the Stakeholder Registry, Influence Model, and Conflict Matrix.
+The `104_StakeholderGovernanceStandard` is the root node of the Human Context Layer. It defines a rigid, enterprise-grade governance structure for cataloging every human, system, and regulatory entity impacted by the product. This standard prevents downstream duplication in `105_Persona` and `107_Journey` by acting as the single source of truth for the Stakeholder Registry, Influence Model, and Conflict Matrix.
 
 ## 2. Validation & Quality Gates
 Artifacts following this standard MUST pass these checks:
@@ -35,12 +35,14 @@ Artifacts following this standard MUST pass these checks:
 - No duplicated stakeholder roles.
 - Every stakeholder MUST have measurable success criteria.
 - Every stakeholder MUST have an influence classification (Power/Interest).
-- Every stakeholder MUST have at least one downstream consumer (e.g., a Persona or JTBD).
+- Every Primary Stakeholder MUST trace to a minimum of one downstream Persona (`105`).
+- Every downstream Persona MUST map back to exactly one Primary or Secondary Stakeholder defined here.
 
 ### Quality Gates
 - **QG-STAKE-001**: Reject if any stakeholder cannot trace back to the Problem or Goals.
 - **QG-STAKE-002**: Reject if the Power/Interest Matrix is incomplete for identified Primary stakeholders.
 - **QG-STAKE-003**: Reject if the stakeholder registry contains duplicate roles or undefined ownership/authority.
+- **QG-STAKE-004**: Reject if any Primary Stakeholder has no measurable objective.
 
 ## 3. Core Components
 
@@ -58,41 +60,55 @@ Every stakeholder must be strictly classified into one of these types:
 
 ### 3.2 Stakeholder Metadata Schema (The Stakeholder Card)
 Every stakeholder MUST be modeled with this strict schema:
+- **Stakeholder ID**: (e.g., STK-001) - Stable reference for all downstream artifacts.
 - **Name**: (e.g., Clinical Auditor)
+- **Lifecycle Status**: (Potential / Validated / Active / Deprecated)
 - **Category**: (from Taxonomy above)
+- **Priority**: (Critical / High / Medium / Low)
+- **Health Status**: (Healthy / At Risk / Misaligned / Blocked)
 - **Description**: (Brief summary of their role)
 - **Goals**: (What they want to achieve)
 - **Pain Points**: (What currently blocks them)
-- **Influence**: (Low/Medium/High)
-- **Power**: (Low/Medium/High)
-- **Interest**: (Low/Medium/High)
+- **Influence**: (Low / Medium / High)
+- **Power**: (Low / Medium / High)
+- **Interest**: (Low / Medium / High)
 - **Decision Authority**: (Can they block the product?)
-- **Consumes**: (What data/value they need)
-- **Produces**: (What data/value they provide)
-- **Depends On**: (Other stakeholders)
+- **Relationship Types**: (Depends, Approves, Consumes, Produces, Regulates, Collaborates)
+- **Communication Owner**: (e.g., Product Manager, Compliance Lead)
 - **Success Definition**: (Measurable outcome)
 
-## 4. Traceability
+## 4. Output Contract
+To guarantee deterministic AI orchestration, this artifact explicitly produces the following machine-readable assets for downstream nodes:
+- **Stakeholder Registry** (Used by `105_Persona`)
+- **Influence Matrix** (Used by `104` Governance)
+- **Authority Matrix** (Used by `108_Requirements`)
+- **Conflict Matrix** (Used by `110_Assumptions`)
+- **Communication Matrix** (Used by `104` Governance)
+
+## 5. Traceability
 To guarantee alignment with the core strategy layer, every stakeholder MUST trace to:
 - **Vision Segment**: Which part of `100_Vision` do they serve?
 - **Problem Impact**: Which root cause in `101_Problem` affects them?
 - **Goal Ownership**: Which KPI in `102_ProductGoals` do they influence?
 - **Principle Alignment**: Which trade-off in `103_Principles` protects them?
 
-## 5. Context & AI Prompts
+## 6. Context & AI Prompts
 ### Hydration Rules
 - AI Swarms MUST NOT invent stakeholders simply because they commonly exist in similar industries.
 - Every stakeholder must be strictly justified by the hydrated Vision, Problem, Goals, or explicit domain research.
 
+### AI Boundary Rule
+- **AI MUST NOT infer Personas.** AI only identifies Stakeholders here. Persona synthesis belongs exclusively to `105_PersonaStandard`.
+
 ### Memory TTL
 - `Permanent` for the duration of the Human Context Layer generation.
 
-## 6. Anti-Patterns
+## 7. Anti-Patterns
 - **The Generic User**: Using "The User" instead of specific, classified stakeholder cards.
 - **The Empty Stakeholder**: A stakeholder with no Success Definition or Traceability.
 - **Ignoring Adversaries**: Failing to map malicious actors who stress the system.
 
-## 7. Section Registry (Template Contract)
+## 8. Section Registry (Template Contract)
 Every Stakeholder artifact MUST use these exact headings.
 
 <!-- SECTION GROUP: Discovery Core -->
@@ -118,6 +134,10 @@ Every Stakeholder artifact MUST use these exact headings.
 - # 14. Alignment Risks
 
 <!-- SECTION GROUP: Governance -->
-- # 15. Acceptance Criteria
-- # 16. Traceability
-- # 17. AI Context
+- # 15. Ownership Rules
+- # 16. Review Cadence
+- # 17. Lifecycle
+- # 18. Escalation Path
+- # 19. Acceptance Criteria
+- # 20. Traceability
+- # 21. AI Context
