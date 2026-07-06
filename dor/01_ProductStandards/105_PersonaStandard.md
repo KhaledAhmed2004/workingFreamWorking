@@ -15,7 +15,7 @@ Approval Date: 2026-07-06
 Last Reviewed: 2026-07-06
 Review Status: Approved
 Artifact ID: PS-105
-Depends On: 101_ProblemStandard.md, 103_ProductPrinciplesStandard.md, 104_StakeholderStandard.md
+Depends On: 101_ProblemStandard.md, 102_ProductGoalStandard.md, 103_ProductPrinciplesStandard.md, 104_StakeholderStandard.md
 Extends: 050_ProductStandardContract.md
 Base Contract: 050_ProductStandardContract.md
 Template Path: 01_ProductStandards/Templates/Discovery/Persona.template.md

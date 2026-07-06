@@ -69,6 +69,7 @@ Every Capability MUST be modeled with this strict schema:
 - **Parent Step ID**: (e.g., STEP-001)
 - **Parent JTBD ID**: (e.g., JTBD-001)
 - **Parent Persona ID**: (e.g., PER-001)
+- **Parent STK-ID**: (e.g., STK-005, required for Compliance/Security NFRs)
 - **Principle Constraint**: (e.g., "Must prioritize security over speed per 103")
 
 ## 4. Output Contract

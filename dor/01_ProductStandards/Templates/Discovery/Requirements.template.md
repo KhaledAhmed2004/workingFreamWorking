@@ -78,6 +78,7 @@ Next Artifact: [Success Metrics Document]
 - **Parent Step ID**: [System-wide or STEP-003]
 - **Parent JTBD ID**: [e.g., JTBD-001]
 - **Parent Persona ID**: [e.g., PER-001]
+- **Parent STK-ID**: [e.g., STK-005]
 - **Principle Constraint**: [Which Principle governs this?]
 
 *(Repeat Capability Card for each NFR)*

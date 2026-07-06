@@ -10,7 +10,7 @@ Approver: [Approver Name]
 Created: [YYYY-MM-DD]
 Updated: [YYYY-MM-DD]
 Artifact ID: [Unique ID]
-Depends On: [Problem Artifact ID], [Principles Artifact ID], [Stakeholder Artifact ID]
+Depends On: [Problem Artifact ID], [Goal Artifact ID], [Principles Artifact ID], [Stakeholder Artifact ID]
 Next Artifact: [JTBD Document]
 ---
 
